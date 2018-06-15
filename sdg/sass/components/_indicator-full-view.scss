@@ -1,0 +1,100 @@
+%indicator-full-view,
+.indicator-full-view {
+  &__status {
+    @include duk-gutter-vertical($duk-double-spacing-unit);
+  }
+
+  &__agency-list {
+    > a {
+      display: inline-block;
+      font-weight: map-get($font-weight, 'semi-bold');
+
+      &:first-child {
+        padding-left: $duk-quarter-spacing-unit / 2;
+      }
+
+      &:not(:last-child) {
+        padding-right: $duk-quarter-spacing-unit;
+
+        &:after {
+          content: ",";
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  &__other-info {
+    @include duk-gutter-vertical($duk-half-spacing-unit, padding);
+
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-gutter-horizontal(0, padding);
+    }
+  }
+
+  &__other-info-item {
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-gutter-horizontal($duk-base-spacing-unit, padding);
+    }
+
+    @include duk-at-breakpoint(desktop) {
+      @include duk-gutter-horizontal($duk-double-spacing-unit, padding);
+    }
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:not(:first-child) {
+      padding-top: $duk-base-spacing-unit;
+    }
+
+    &:not(:last-child) {
+      padding-bottom: $duk-base-spacing-unit;
+    }
+
+    & + * {
+      border-top: sdg-border-line($colour: map-get($colors-border, 'light-grey'));
+    }
+  }
+
+  &__field-target {
+    > * + * {
+      border-top: sdg-border-line($colour: map-get($colors-border, 'light-grey'));
+    }
+  }
+}
+
+.node-indicator.view-mode-full {
+  .node-indicator__status {
+    @extend %indicator-full-view__status;
+  }
+
+  .field-name-field-agency {
+    .agencies {
+      @extend %indicator-full-view__agency-list;
+    }
+  }
+
+  .field-name-field-other-info-indicator {
+    @extend %indicator-full-view__other-info;
+
+    .field-items {
+      .field-item {
+        @extend %indicator-full-view__other-info-item;
+      }
+    }
+  }
+
+  .field-name-field-target {
+    .vocabulary-target.view-mode-inline_teaser {
+      @extend %indicator-full-view__field-target;
+    }
+  }
+}

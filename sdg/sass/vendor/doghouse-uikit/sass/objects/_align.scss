@@ -1,0 +1,59 @@
+// =============================================================================
+// Name:            Align
+// Description:     Collection of useful utility placeholders and classes to
+//                  align images and objects.
+//
+// Component:       `duk-align-left`
+//                  `duk-align-right`
+//                  `duk-align-center`
+//
+// Markup:
+//
+// <!-- duk-align-right -->
+// <img src="http://placekitten.com/g/300/200" alt="" class="duk-align-right" />
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-align-namespace:         $duk-namespace !default;
+
+$duk-align-margin-horizontal: $duk-base-spacing-unit !default;
+$duk-align-margin-vertical:   $duk-base-spacing-unit !default;
+
+
+// Placeholders
+// =============================================================================
+
+%#{$duk-align-namespace}align-left {
+  @include duk-align-left($duk-align-margin-vertical, $duk-align-margin-horizontal);
+}
+
+%#{$duk-align-namespace}align-right {
+  @include duk-align-right($duk-align-margin-vertical, $duk-align-margin-horizontal);
+}
+
+%#{$duk-align-namespace}align-center {
+  @include duk-align-center;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-align-classes == true {
+
+  .#{$duk-align-namespace}align-left {
+    @extend %#{$duk-align-namespace}align-left;
+  }
+
+  .#{$duk-align-namespace}align-right {
+    @extend %#{$duk-align-namespace}align-right;
+  }
+
+  .#{$duk-align-namespace}align-center {
+    @extend %#{$duk-align-namespace}align-center;
+  }
+
+} // @endif

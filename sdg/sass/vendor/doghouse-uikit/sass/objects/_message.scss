@@ -1,0 +1,156 @@
+// =============================================================================
+// Name:            Message
+// Description:     Defines styles for alert messages.
+//
+// Component:       `duk-message`
+//
+// Modifiers:       `duk-message--success`
+//                  `duk-message--warning`
+//                  `duk-message--danger`
+//                  `duk-message--round`
+//
+// Dependencies:    `tools/border`
+//
+// Markup:
+//
+// <!-- duk-message -->
+// <div class="duk-message">
+//   Hello World!
+// </div>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-message-namespace:          $duk-namespace !default;
+
+$duk-message-margin-vertical:    $duk-base-spacing-unit !default;
+$duk-message-padding:            $duk-half-spacing-unit !default;
+$duk-message-round:              $duk-base-ui-round !default;
+
+$duk-message-background:         $duk-base-ui-background !default;
+$duk-message-border:             $duk-base-ui-border !default;
+$duk-message-color:              $duk-base-ui-color !default;
+
+$duk-message-success-background: $duk-base-ui-success-background !default;
+$duk-message-success-border:     $duk-base-ui-success-border !default;
+$duk-message-success-color:      $duk-base-ui-success-color !default;
+
+$duk-message-warning-background: $duk-base-ui-warning-background !default;
+$duk-message-warning-border:     $duk-base-ui-warning-border !default;
+$duk-message-warning-color:      $duk-base-ui-warning-color !default;
+
+$duk-message-danger-background:  $duk-base-ui-danger-background !default;
+$duk-message-danger-border:      $duk-base-ui-danger-border !default;
+$duk-message-danger-color:       $duk-base-ui-danger-color !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Message
+ ============================================================================ */
+
+@mixin duk-message {
+  background: $duk-message-background;
+  border: $duk-message-border;
+  color: $duk-message-color;
+  margin-bottom: $duk-message-margin-vertical;
+  padding: $duk-message-padding;
+}
+
+%#{$duk-message-namespace}message {
+  @include duk-message;
+}
+
+
+/* Modifier: `duk-message--success`
+ *
+ * Extends `.duk-message` to indicate it is a success.
+ ============================================================================ */
+
+@mixin duk-message--success {
+  background: $duk-message-success-background;
+  border: $duk-message-success-border;
+  color: $duk-message-success-color;
+}
+
+%#{$duk-message-namespace}message--success {
+  @include duk-message--success;
+}
+
+
+/* Modifier: `duk-message--warning`
+ *
+ * Extends `.duk-message` to indicate it is a warning.
+ ============================================================================ */
+
+@mixin duk-message--warning {
+  background: $duk-message-warning-background;
+  border: $duk-message-warning-border;
+  color: $duk-message-warning-color;
+}
+
+%#{$duk-message-namespace}message--warning {
+  @include duk-message--warning;
+}
+
+
+/* Modifier: `duk-message--danger`
+ *
+ * Extends `.duk-message` to indicate it is a danger.
+ ============================================================================ */
+
+@mixin duk-message--danger {
+  background: $duk-message-danger-background;
+  border: $duk-message-danger-border;
+  color: $duk-message-danger-color;
+}
+
+%#{$duk-message-namespace}message--danger {
+  @include duk-message--danger;
+}
+
+
+/* Modifier: `duk-message--round`
+ *
+ * Extends `.duk-message` and rounds its corners.
+ ============================================================================ */
+
+@mixin duk-message--round {
+  @include duk-border-round($duk-message-round);
+}
+
+%#{$duk-message-namespace}message--round {
+  @include duk-message--round;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-message-classes == true {
+
+  .#{$duk-message-namespace}message {
+    @extend %#{$duk-message-namespace}message;
+  }
+
+  .#{$duk-message-namespace}message--success {
+    @extend %#{$duk-message-namespace}message--success;
+  }
+
+  .#{$duk-message-namespace}message--warning {
+    @extend %#{$duk-message-namespace}message--warning;
+  }
+
+  .#{$duk-message-namespace}message--danger {
+    @extend %#{$duk-message-namespace}message--danger;
+  }
+
+  .#{$duk-message-namespace}message--round {
+    @extend %#{$duk-message-namespace}message--round;
+  }
+
+} // @endif

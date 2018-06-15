@@ -1,0 +1,35 @@
+// =============================================================================
+// Name:            Vertical Align
+// Description:     Collection of mixins to vertical align images and objects.
+// =============================================================================
+
+
+/**
+ * Prepare a wrapper to have its content vertically aligned.
+ *
+ * 1. Fix block items being pushed out of their parent container.
+ */
+@mixin duk-vertical-align-wrapper {
+  font-size: 0; /* 1 */
+
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+
+/**
+ * Vertically align an element inside its wrapper.
+ *
+ * 1. Fix block items being pushed out of their parent container.
+ */
+@mixin duk-vertical-align-content($direction: top) {
+  display: inline-block;
+  font-size: 1rem; /* 1 */
+  @if $direction != top {
+    vertical-align: $direction;
+  }
+}

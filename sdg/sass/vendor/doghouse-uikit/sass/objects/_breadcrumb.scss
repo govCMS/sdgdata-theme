@@ -1,0 +1,94 @@
+// =============================================================================
+// Name:            Breadcrumb
+// Description:     Defines styles for breadcrumb navigations.
+//
+// Component:       `duk-breadcrumb`
+//
+// Modifiers:       `duk-breadcrumb--path`
+//
+// Markup:
+//
+// <!-- duk-breadcrumb -->
+// <ul class="duk-breadcrumb">
+//   <li><a href="#">Home</a></li>
+//   <li><a href="#">About</a></li>
+//   <li><a href="#">Portfolio</a></li>
+//   <li><a href="#">Contact</a></li>
+// </ul>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-breadcrumb-namespace:              $duk-namespace !default;
+
+$duk-breadcrumb-delimit-character:      "\00BB" "\00A0" !default;
+$duk-breadcrumb-path-delimit-character: "\002F" "\00A0" !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Breadcrumb
+ ============================================================================ */
+
+@mixin duk-breadcrumb {
+  @include duk-clearfix;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    &,
+    > a {
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+    }
+  }
+
+  > li + li:before {
+    content: $duk-breadcrumb-delimit-character;
+  }
+}
+
+%#{$duk-breadcrumb-namespace}breadcrumb {
+  @include duk-breadcrumb;
+}
+
+
+/* Modifier: `duk-breadcrumb--path`
+ *
+ * Extends `.duk-breadcrumb` and turns it into a path-like structure, GitHub
+ * style.
+ ============================================================================ */
+
+@mixin duk-breadcrumb--path {
+  > li + li:before {
+    content: $duk-breadcrumb-path-delimit-character;
+  }
+}
+
+%#{$duk-breadcrumb-namespace}breadcrumb--path {
+  @include duk-breadcrumb--path;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-breadcrumb-classes == true {
+
+  .#{$duk-breadcrumb-namespace}breadcrumb,
+  .#{$duk-breadcrumb-namespace}breadcrumb ul {
+    @extend %#{$duk-breadcrumb-namespace}breadcrumb;
+  }
+
+  .#{$duk-breadcrumb-namespace}breadcrumb--path,
+  .#{$duk-breadcrumb-namespace}breadcrumb--path ul {
+    @extend %#{$duk-breadcrumb-namespace}breadcrumb--path;
+  }
+
+} // @endif

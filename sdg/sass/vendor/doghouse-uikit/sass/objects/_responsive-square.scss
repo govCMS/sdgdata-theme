@@ -1,0 +1,50 @@
+// =============================================================================
+// Name:            Responsive Square
+// Description:     Collection of useful utility classes to create a responsive
+//                  square.
+//
+// Component:       `duk-responsive-square`
+//
+// Sub-object:      `duk-responsive-square__content`
+//
+// Markup:
+//
+// <!-- duk-responsive-square -->
+// <div class="duk-responsive-square">
+//   <div class="duk-responsive-square__content">Hello World</div>
+// </div>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-responsive-square-namespace: $duk-namespace !default;
+
+
+// Placeholders
+// =============================================================================
+
+%#{$duk-responsive-square-namespace}responsive-square {
+  @include duk-responsive-square-wrapper;
+}
+
+%#{$duk-responsive-square-namespace}responsive-square__content {
+  @include duk-responsive-square-content;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-responsive-square-classes == true {
+
+  .#{$duk-responsive-square-namespace}responsive-square {
+    @extend %#{$duk-responsive-square-namespace}responsive-square;
+  }
+
+  .#{$duk-responsive-square-namespace}responsive-square__content {
+    @extend %#{$duk-responsive-square-namespace}responsive-square__content;
+  }
+
+} // @endif

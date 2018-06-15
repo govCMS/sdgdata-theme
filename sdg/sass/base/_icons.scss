@@ -1,0 +1,7 @@
+// Load font for sdg icons.
+@include duk-icon-font-load($sdg-icon-mappings);
+@include duk-icon-generate-classes($sdg-icon-mappings, 'sdg-');
+
+// Font awesome icons.
+@include duk-icon-font-load;
+@include duk-icon-generate-classes($namespace: 'fa-');

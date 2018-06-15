@@ -1,0 +1,70 @@
+// =============================================================================
+// Name:            Flex Grids.
+// Description:     Collection of mixins to build flex grids.
+// =============================================================================
+
+
+/**
+ * Flex grid base.
+ */
+@mixin duk-flex-grid() {
+  @include duk-display-flex;
+  @include duk-flex-wrap(wrap);
+  @include duk-justify-content(space-around);
+}
+
+/**
+ * Flex grid column size.
+ */
+@mixin duk-flex-grid-col-width($columns) {
+  @include duk-flex-basis(percentage(1 / $columns));
+}
+
+/**
+ * Responsive Flex grid.
+ *
+ * Should be applied to the direct wrapper of the grid columns.
+ *
+ * @param $grid-map
+ *   A SASS map with the keys defining the breakpoint and the values defining
+ *   the column count. Eg. (medium: 2, large: 3, x-large: 4)
+ * @param $child-selector
+ *   The selector for the grid columns.
+ */
+@mixin duk-flex-grid-responsive($grid-map: (), $child-selector: '*') {
+  $bps: map-keys($grid-map);
+
+  // Only apply flex display to wrapper at first breakpoint.
+  @include duk-susy-breakpoint(nth($bps, 1)) {
+    @include duk-flex-grid;
+  }
+
+  > #{$child-selector} {
+    @each $bp, $cols in $grid-map {
+      @include duk-susy-breakpoint($bp) {
+        @include duk-flex-grid-col-width($cols);
+      }
+    }
+  }
+}
+
+/**
+ * Flex grid gutter.
+ *
+ * Adds a gutter to each column in a flex grid whilst ensuring the edges of the
+ * grid are not indented.
+ *
+ * @param $gutter-size
+ *   The size of the gutter.
+ * @param $child-selector
+ *   The selector for the grid columns.
+ */
+@mixin duk-flex-grid-gutter($gutter-size: $duk-half-spacing-unit, $child-selector: '*') {
+  margin: (-$gutter-size);
+  padding: 0;
+
+  > #{$child-selector} {
+    padding: $gutter-size;
+    margin: 0;
+  }
+}

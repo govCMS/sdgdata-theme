@@ -1,0 +1,36 @@
+// =============================================================================
+// Name:            Align
+// Description:     Collection of mixins to help align images and objects.
+// =============================================================================
+
+
+/**
+ * Align an object to the left.
+ */
+@mixin duk-align-left($margin-vertical, $margin-horizontal) {
+  display: block;
+  float: left;
+  margin-bottom: $margin-vertical;
+  margin-right: $margin-horizontal;
+}
+
+
+/**
+ * Align an object to the right.
+ */
+@mixin duk-align-right($margin-vertical, $margin-horizontal) {
+  display: block;
+  float: right;
+  margin-bottom: $margin-vertical;
+  margin-left: $margin-horizontal;
+}
+
+
+/**
+ * Align an object to the center.
+ */
+@mixin duk-align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

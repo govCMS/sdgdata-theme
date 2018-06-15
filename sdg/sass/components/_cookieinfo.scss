@@ -1,0 +1,8 @@
+.cookieinfo {
+  box-shadow: 0 2px 4px 0 map-get($colors-mono-transparent, 'semi-light');
+
+  a {
+    font-weight: map-get($font-weight, 'normal');
+    text-decoration: underline !important;
+  }
+}

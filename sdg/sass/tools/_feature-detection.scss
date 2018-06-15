@@ -1,0 +1,6 @@
+// This targets IE10+ browsers via feature detection with -ms-high-contrast
+@mixin msie-feature-detect {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}

@@ -1,0 +1,172 @@
+// =============================================================================
+// Name:            Nav
+// Description:     Defines styles for list navigations.
+//
+// Component:       `duk-nav`
+//
+// Modifiers:       `duk-nav--stacked`
+//                  `duk-nav--banner`
+//                  `duk-nav--fit`
+//                  `duk-nav--keywords`
+//
+// Dependencies:    `duk-clearfix`
+//
+// Markup:
+//
+// <!-- duk-nav -->
+// <ul class="duk-nav">
+//   <li><a href="#">Home</a></li>
+//   <li><a href="#">About</a></li>
+//   <li><a href="#">Portfolio</a></li>
+//   <li><a href="#">Contact</a></li>
+// </ul>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-nav-namespace:         $duk-namespace !default;
+
+$duk-nav-delimit-character: ",\00A0" !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Nav
+ ============================================================================ */
+
+@mixin duk-nav {
+  @extend %#{$duk-clearfix-namespace}clearfix;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    &,
+    > a {
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+    }
+  }
+}
+
+%#{$duk-nav-namespace}nav {
+  @include duk-nav;
+}
+
+
+/* Modifier: `duk-nav--stacked`
+ *
+ * Extends `.duk-nav` and throws the list into vertical mode.
+ ============================================================================ */
+
+@mixin duk-nav--stacked {
+  > li {
+    display: list-item;
+
+    > a {
+      display: block;
+    }
+  }
+}
+
+%#{$duk-nav-namespace}nav--stacked {
+  @include duk-nav--stacked;
+}
+
+
+/* Modifier: `duk-nav--banner`
+ *
+ * Extends `.duk-nav` and centres the list.
+ ============================================================================ */
+
+@mixin duk-nav--banner {
+  text-align: center;
+}
+
+%#{$duk-nav-namespace}nav--banner {
+  @include duk-nav--banner;
+}
+
+
+/* Modifier: `duk-nav--fit`
+ *
+ * Extends `.duk-nav` and forces a list to occupy 100% of the available width
+ * of its parent container.
+ ============================================================================ */
+
+@mixin duk-nav--fit {
+  display: table;
+  width: 100%;
+
+  > li {
+    display: table-cell;
+
+    > a {
+      display: block;
+    }
+  }
+}
+
+%#{$duk-nav-namespace}nav--fit {
+  @include duk-nav--fit;
+}
+
+
+/* Modifier: `duk-nav--keywords`
+ *
+ * Extends `.duk-nav` and turns it into a list of keywords.
+ ============================================================================ */
+
+@mixin duk-nav--keywords($delimit-character: $duk-nav-delimit-character) {
+  > li {
+    &:after {
+      content: $delimit-character;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+  }
+}
+
+%#{$duk-nav-namespace}nav--keywords {
+  @include duk-nav--keywords;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-nav-classes == true {
+
+  .#{$duk-nav-namespace}nav,
+  .#{$duk-nav-namespace}nav ul {
+    @extend %#{$duk-nav-namespace}nav;
+  }
+
+  .#{$duk-nav-namespace}nav--stacked,
+  .#{$duk-nav-namespace}nav--stacked ul {
+    @extend %#{$duk-nav-namespace}nav--stacked;
+  }
+
+  .#{$duk-nav-namespace}nav--banner,
+  .#{$duk-nav-namespace}nav--banner ul {
+    @extend %#{$duk-nav-namespace}nav--banner;
+  }
+
+  .#{$duk-nav-namespace}nav--fit,
+  .#{$duk-nav-namespace}nav--fit ul {
+    @extend %#{$duk-nav-namespace}nav--fit;
+  }
+
+  .#{$duk-nav-namespace}nav--keywords,
+  .#{$duk-nav-namespace}nav--keywords ul {
+    @extend %#{$duk-nav-namespace}nav--keywords;
+  }
+
+} // @endif

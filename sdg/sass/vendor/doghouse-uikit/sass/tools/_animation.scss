@@ -1,0 +1,19 @@
+// =============================================================================
+// Name:            Animation
+// Description:     Collection of animations.
+// =============================================================================
+
+
+/**
+ * Animation: Spin
+ */
+@if $duk-use-animation-spin == true {
+  @include keyframes(duk-spin) {
+    0% {
+      @include rotate(0deg);
+    }
+    100% {
+      @include rotate(359deg);
+    }
+  }
+}

@@ -1,0 +1,65 @@
+// Indicator teaser
+
+.indicator-teaser {
+  height: 100%;
+  position: relative;
+
+  &:before {
+    @include duk-position-absolute(top 0 left $duk-half-spacing-unit);
+    @include duk-size(calc(100% - #{$duk-half-spacing-unit}), 100%);
+    background-color: map-get($colors-background, 'light-alpha');
+    content: "";
+    z-index: map-get($z-index, 'below-bottom');
+  }
+
+  /*
+   * 1. Reverts default <a> tag look and feel.
+   */
+  &__wrapper {
+    color: map-get($colors-font, 'body');         /* 1 */
+    display: block;
+    font-weight: map-get($font-weight, 'light');  /* 1 */
+    padding-bottom: $duk-base-spacing-unit;
+    text-decoration: none;                        /* 1 */
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: map-get($colors-font, 'body');       /* 1 */
+    }
+  }
+
+  &__status {
+    border-bottom-left-radius: $duk-base-spacing-unit;
+    border-top-left-radius: $duk-base-spacing-unit;
+    color: map-get($colors-text, 'darkest');
+    background-color: map-get($colors-background, 'light');
+    padding-left: $duk-base-spacing-unit;
+    padding-bottom: $duk-quarter-spacing-unit;
+    padding-top: $duk-quarter-spacing-unit;
+  }
+
+  &__number,
+  &__summary {
+    margin-top: $duk-base-spacing-unit;
+    padding-left: $duk-one-n-half-spacing-unit;
+    padding-right: $duk-base-spacing-unit;
+  }
+
+  &__number {
+    @include font-size('h4');
+  }
+
+  &__summary {
+    p {
+      @include duk-gutter-vertical(0);
+    }
+  }
+
+  @each $name, $col in $colors-status {
+    &--#{$name} &__status {
+      background-color: $col;
+    }
+  }
+
+}

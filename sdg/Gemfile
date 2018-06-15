@@ -1,0 +1,13 @@
+source 'https://rubygems.org'
+
+group :development do
+
+  # Sass, Compass and extensions.
+  gem 'breakpoint'                  # Manages CSS media queries.
+  gem 'compass', '~> 1'             # Framework built on Sass.
+  gem 'compass-normalize'           # Compass version of normalize.css.
+  gem 'sass', '~> 3.4'              # Sass.
+  gem 'sass-globbing'               # Import Sass files based on globbing pattern.
+  gem 'susy', '~> 2.2'              # Susy grid framework.
+  gem 'toolkit'                     # Compass utility from the fabulous Snugug.
+end

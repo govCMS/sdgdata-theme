@@ -1,0 +1,70 @@
+
+$susy: (
+  columns: 12,
+  gutters: 0,
+  math: fluid,
+  output: float,
+);
+
+/**
+ * Base breakpoints.
+ */
+$duk-base-breakpoints: (
+  base: (
+    query: 0.1em,
+    layout: $susy
+  ),
+  x-small: (
+    query: 30em,
+    layout: $susy
+  ),
+  small: (
+    query: 37.5em,
+    layout: $susy
+  ),
+  medium: (
+    query: 48em,
+    layout: $susy
+  ),
+  large: (
+    query: 56.25em,
+    layout: $susy
+  ),
+  x-large: (
+    query: 75em,
+    layout: $susy
+  ),
+  xx-large: (
+    query: 90em,
+    layout: $susy,
+  ),
+  xxx-large: (
+    query: 100em,
+    layout: $susy
+  )
+) !default;
+
+
+/**
+ * Breakpoints based on a state mapping to an size.
+ *
+ * Use with duk-at-breakpoint() instead of duk-susy-breakpoint.
+ * @example (desktop-header: large, side-nav-visible: medium)
+ */
+$duk-base-breakpoint-states: (
+  phablet: x-small,
+  laptop: large,
+  desktop: x-large,
+  desktop-wide: xx-large,
+  desktop-widest: xxx-large,
+  tablet: small,
+  resp-tabs: medium,
+  flag-sbs: medium,
+  site-container: xx-large,
+  goal-indicator-status: medium,
+  goal-teaser-large: x-large,
+  goal-teaser-medium: medium,
+  goal-teaser-small: small,
+  typography: large,
+  large-donut: large,
+);

@@ -1,0 +1,88 @@
+.goals-list,
+%goals-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+
+  &__outer-wrapper {
+    position: relative;
+  }
+
+  &__wrapper {
+    @include bleed-background('lighter');
+    background: map-get($colors-background, 'lighter');
+    margin-top: $goals-mobile-offset;
+  }
+
+  &__content-container {
+    position: relative;
+    top: -$goals-mobile-offset;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__goals-container {
+    float: left;
+    position: relative;
+    width: percentage(1 / 2);
+    padding-left: 0;
+  }
+
+  .goal-teaser__icon {
+    &:before {
+      @include sdg-transition(color);
+    }
+
+    &:hover::before {
+      color: map-get($colors-text, 'darkest');
+    }
+  }
+
+  @include duk-at-breakpoint(desktop) {
+
+    &__wrapper {
+      margin-top: $goals-desktop-offset;
+    }
+
+    &__content-container {
+      top: -$goals-desktop-offset;
+    }
+  }
+
+  @include duk-at-breakpoint(goal-teaser-small) {
+    &__goals-container {
+      width: percentage(1 / 4);
+    }
+  }
+
+  @include duk-at-breakpoint(goal-teaser-medium) {
+    &__goals-container {
+      width: percentage(1 / 5);
+    }
+  }
+
+  @include duk-at-breakpoint(goal-teaser-large) {
+    &__goals-container {
+      width: percentage(1 / 6);
+    }
+  }
+}
+
+// Drupal selectors.
+.pane-goals-list-view {
+  @extend %goals-list__outer-wrapper;
+
+  .view-goals-list-view {
+    @extend %goals-list__wrapper;
+
+    .view-content {
+      @extend %goals-list__content-container;
+
+      .views-row {
+        @extend %goals-list__goals-container;
+      }
+    }
+  }
+}

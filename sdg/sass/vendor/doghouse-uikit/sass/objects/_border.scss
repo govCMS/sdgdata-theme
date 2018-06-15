@@ -1,0 +1,50 @@
+// =============================================================================
+// Name:            Border
+// Description:     Collection of useful utility placeholders and classes to
+//                  style borders.
+//
+// Component:       `duk-border-round`
+//                  `duk-border-circle`
+//
+// Markup:
+//
+// <!-- duk-border-round -->
+// <img src="http://placekitten.com/g/300/200" alt="" class="duk-border-round" />
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-border-namespace:     $duk-namespace !default;
+
+$duk-border-radius-circle: 50% !default;
+$duk-border-radius-round:  $duk-base-ui-round !default;
+
+
+// Placeholders
+// =============================================================================
+
+%#{$duk-border-namespace}border-round {
+  @include duk-border-round($duk-border-radius-round);
+}
+
+%#{$duk-border-namespace}border-circle {
+  @include duk-border-round($duk-border-radius-circle);
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-border-classes == true {
+
+  .#{$duk-border-namespace}border-round {
+    @extend %#{$duk-border-namespace}border-round;
+  }
+
+  .#{$duk-border-namespace}border-circle {
+    @extend %#{$duk-border-namespace}border-circle;
+  }
+
+} // @endif

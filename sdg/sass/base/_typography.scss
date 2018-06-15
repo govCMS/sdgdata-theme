@@ -1,0 +1,51 @@
+// Import font.
+@import url($font-family-heading-url);
+@import url($font-family-paragraphs-url);
+
+// Generic (applies to all).
+body {
+  font-family: $font-family-paragraphs;
+  color: map-get($colors-font, 'body');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+#page-wrapper {
+  @include sdg-site-base-font;
+
+  ul, ol {
+    line-height: map-get($line-heights, 'small-larger');
+
+    @include duk-at-breakpoint(laptop) {
+      line-height: map-get($line-heights, 'body');
+    }
+  }
+}
+
+// Base heading styles.
+@each $heading in $font-headings {
+  #{$heading} {
+    @include heading($heading);
+  }
+}
+
+// Heading 2 is always bold.
+h2 {
+  @include font-weight(bold);
+}
+
+// Generic styling for links.
+a {
+  @include link('body', 'body-hover');
+}
+
+.large-copy {
+  @include font-size('large');
+  font-weight: map-get($font-weight, 'normal');
+
+  @include duk-at-breakpoint(laptop) {
+    @include font-size('larger');
+  }
+}

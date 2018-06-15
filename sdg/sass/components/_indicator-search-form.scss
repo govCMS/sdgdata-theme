@@ -1,0 +1,183 @@
+// Search form
+
+.view-indicator-search-form {
+  margin-bottom: $duk-one-n-half-spacing-unit;
+
+  @include duk-at-breakpoint(desktop) {
+    float: right;
+    margin-bottom: $duk-double-spacing-unit;
+    width: 30%;
+  }
+
+  .views-filters-toggle {
+    @include border-radius(2px);
+    @include duk-icon('filter', $sdg-icon-mappings, 'after');
+    background: map-get($colors-background, 'primary');
+    color: map-get($colors-text, 'lightest');
+    cursor: pointer;
+    padding: $duk-base-spacing-unit;
+    position: relative;
+
+    &:after {
+      font-size: 180%;
+      position: absolute;
+      right: $duk-base-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(desktop) {
+      display: none;
+    }
+  }
+
+  .views-filters-container {
+    @include duk-position-fixed(top 0 left -200vw);
+    @include sdg-transition(left);
+    background: map-get($colors-background, 'lightest');
+    height: 100%;
+    padding: $duk-one-n-half-spacing-unit;
+    width: calc(100% - #{$menu-toggle-width});
+    z-index: 10;
+
+    .search-filters-open & {
+      left: 0;
+    }
+
+    /*
+     * 1. Override jQuery Dim inline CSS.
+     */
+    @include duk-at-breakpoint(desktop) {
+      height: auto;
+      left: auto;
+      padding: 0;
+      position: relative !important; /* 1 */
+      top: auto;
+      width: auto;
+      z-index: 1;
+    }
+  }
+
+  .views-filters-close {
+    background: map-get($colors-background, 'overlay-close');
+    color: map-get($colors-line, 'white');
+    cursor: pointer;
+    height: map-get($search-filters-overlay, 'button-height');
+    position: absolute;
+    right: map-get($search-filters-overlay, 'button-width') * -1;
+    top: 0;
+    width: map-get($search-filters-overlay, 'button-width');
+
+    &:before,
+    &:after {
+      background: map-get($colors-background, 'lightest');
+      display: block;
+      content: " ";
+      height: map-get($search-filters-overlay, 'bar-height');
+      left: (map-get($search-filters-overlay, 'button-width') - map-get($search-filters-overlay, 'bar-width')) * 0.5;
+      position: absolute;
+      top: (map-get($search-filters-overlay, 'button-height') - map-get($search-filters-overlay, 'bar-height')) * 0.5;
+      width: map-get($search-filters-overlay, 'bar-width');
+    }
+
+    &:before {
+      @include transform(rotate(45deg));
+    }
+
+    &:after {
+      @include transform(rotate(-45deg));
+    }
+
+    @include duk-at-breakpoint(desktop) {
+      display: none;
+    }
+  }
+
+  .views-filters {
+    overflow-y: auto;
+
+    @include duk-at-breakpoint(desktop) {
+      overflow-y: visible;
+    }
+  }
+
+  .views-exposed-heading {
+    font-weight: map-get($font-weight, 'semi-bold');
+    margin-bottom: $duk-three-quarter-spacing-unit;
+  }
+
+  .views-exposed-widgets-filters .views-exposed-widget {
+    margin-bottom: $duk-three-quarter-spacing-unit;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .views-exposed-widgets-actions .views-exposed-widget {
+    float: left;
+    margin-right: $duk-three-quarter-spacing-unit;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .views-exposed-widget {
+    float: none;
+    padding: 0;
+
+    label {
+      display: none;
+    }
+
+    .form-text,
+    .form-select {
+      @include appearance('none');
+      @include border-radius(5px);
+      background: map-get($colors-background, 'light-alpha');
+      border-color: map-get($colors-background, 'light-alpha');
+      color: map-get($colors-text, 'body');
+      padding-left: $duk-base-spacing-unit;
+      padding-right: $duk-base-spacing-unit;
+      width: 100%;
+    }
+
+    .form-select {
+      padding-right: $duk-double-spacing-unit;
+    }
+
+    .form-type-select {
+      @include duk-icon('chevron-down', $pseudo: 'after');
+      position: relative;
+
+      &:after {
+        @include duk-position-absolute(top 50% right $duk-base-spacing-unit);
+        @include translateY(-50%);
+      }
+
+      select::-ms-expand {
+        display:none;
+      }
+    }
+  }
+
+  .views-widget-sort-sort_bef_combine {
+    border-top: 1px solid map-get($colors-border, 'light-grey');
+    margin-top: $duk-three-quarter-spacing-unit;
+    padding-top: $duk-three-quarter-spacing-unit;
+  }
+
+  .views-submit-button .form-submit {
+    @include border-radius(500px);
+    background: map-get($colors-background, 'primary');
+    border-color: map-get($colors-background, 'primary');
+    color: map-get($colors-text, 'lightest');
+  }
+
+  .views-reset-button .form-submit {
+    background: transparent;
+    border-color: transparent;
+    color: map-get($colors-text, 'darkest');
+    text-decoration: underline;
+  }
+
+}

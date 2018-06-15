@@ -1,0 +1,51 @@
+// Breadcrumb
+
+.breadcrumb {
+  color: map-get($colors-text, 'light');
+  font-size: round($duk-base-font-size * 0.875);
+  margin-bottom: $duk-base-spacing-unit;
+
+  @include duk-at-breakpoint(laptop) {
+    padding-top: $duk-half-spacing-unit;
+  }
+
+  &__wrapper {
+    margin-bottom: $duk-one-n-half-spacing-unit;
+
+    .front & {
+      margin-bottom: -16px;
+    }
+  }
+
+  a {
+    color: map-get($colors-link, 'breadcrumb');
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: map-get($colors-link, 'breadcrumb-hover');
+    }
+  }
+
+  i {
+    @include duk-gutter-horizontal($duk-quarter-spacing-unit, padding);
+    color: map-get($colors-link, 'breadcrumb');
+    font-size: 0.75em;
+  }
+
+  .crumb {
+    white-space: nowrap;
+  }
+
+  @include duk-at-breakpoint(laptop) {
+    margin-bottom: $duk-double-spacing-unit;
+  }
+
+}
+
+.page {
+  > .breadcrumb__wrapper.constraints {
+    @include container(map-get($layout-width, container));
+  }
+}

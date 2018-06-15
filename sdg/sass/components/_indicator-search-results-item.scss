@@ -1,0 +1,52 @@
+// Search results item
+
+.search-results-item {
+  &__title a {
+    font-size: map-get($font-sizes, 'h2-mobile');
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: map-get($colors-link, 'primary');
+      text-decoration: underline;
+    }
+  }
+
+  &__excerpt {
+    margin-bottom: $duk-one-n-half-spacing-unit;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: map-get($font-sizes, 'small');
+    margin-bottom: $duk-quarter-spacing-unit;
+    margin-right: $duk-quarter-spacing-unit;
+  }
+
+  &__goal a,
+  &__indicator-number a,
+  &__indicator-status a,
+  &__reporting-year {
+    @include border-radius(500px);
+    color: map-get($colors-buttons, 'default');
+    border: 1px solid map-get($colors-buttons, 'default');
+    font-weight: map-get($font-weight, 'normal');
+    padding-left: $duk-three-quarter-spacing-unit;
+    padding-right: $duk-three-quarter-spacing-unit;
+  }
+
+  &__goal a,
+  &__indicator-number a,
+  &__indicator-status a {
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: map-get($colors-buttons, 'default');
+      color: map-get($colors-text, 'lightest');
+    }
+  }
+}

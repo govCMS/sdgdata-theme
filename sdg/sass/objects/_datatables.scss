@@ -1,0 +1,163 @@
+%datatables,
+.datatables {
+  &__sticky-header {
+    display: none;
+  }
+
+  &__user-input {
+    @include border-radius(5px);
+    height: map-get($line-heights, 'body');
+  }
+
+  &__table-input {
+    margin-bottom: $duk-base-spacing-unit;
+  }
+
+  &__select {
+    height: 42px;
+  }
+
+  &__table {
+    display: block;         // Allow for horizontal scrolling on mobile.
+    overflow-x: auto;       // Allow for horizontal scrolling on mobile.
+    border-bottom: none;
+    border-left: sdg-border-line();
+    border-right: sdg-border-line();
+
+    @include duk-at-breakpoint(desktop) {
+      display: table;     // Disable horizontal scrolling to ensure table is full-width.
+    }
+  }
+
+  &__header {
+    border-bottom-color: transparent;
+  }
+
+  &__row--hover {
+    > *:not(:first-child) {
+      background-color: rgba(map-get($colors-background, 'primary-light'), 0.3);
+      color: map-get($colors-font, 'darkest');
+    }
+  }
+
+  &__data-cell {
+    @include sdg-transition(all, $duration: 0.1s);
+    border-bottom: sdg-border-line();
+  }
+
+  &__no-data {
+    border-bottom: sdg-border-line();
+  }
+
+  &__background {
+    background-color: map-get($colors-background, 'primary-light');
+    color: map-get($colors-font, 'lightest');
+  }
+
+  &__pager {
+    color: rgba(map-get($colors-font, 'darkest'), 0.55) !important;
+    font-weight: map-get($font-weight, 'normal');
+
+    &:hover {
+      color: map-get($colors-link, 'body-hover') !important;
+      border-color: transparent;
+      background: none;
+    }
+  }
+
+  &__pager--current {
+    @include border-radius(50%);
+    cursor: default;
+    background: map-get($colors-background, 'primary-beta');
+    color: map-get($colors-font, 'lightest') !important;
+    border-color: transparent;
+    height: $current-pager-size;
+    line-height: $current-pager-size;
+    width: $current-pager-size;
+    padding: 0;
+  }
+
+  &__pager--disabled {
+    opacity: 0.3;
+  }
+}
+
+.ckan-display-table {
+  .sticky-header {
+    @extend %datatables__sticky-header;
+  }
+
+  .dataTables_wrapper {
+    .dataTables_length,
+    .dataTables_filter {
+      @extend %datatables__table-input;
+    }
+
+    .dataTables_length {
+      select {
+        @extend %datatables__user-input;
+        @extend %datatables__select;
+      }
+    }
+
+    .dataTables_filter {
+      input {
+        @extend %datatables__user-input;
+      }
+    }
+
+    .dataTables_paginate {
+      .paginate_button {
+        @extend %datatables__pager;
+
+        &.current {
+          @extend %datatables__pager--current;
+
+          &:hover {
+            @extend %datatables__pager--current;
+          }
+        }
+
+        &.disabled {
+          @extend %datatables__pager--disabled;
+        }
+      }
+    }
+
+    .dataTable {
+      @extend %datatables__table;
+
+      thead {
+        tr[role=row] {
+          > * {
+            @extend %datatables__background;
+          }
+
+          th {
+            @extend %datatables__header;
+          }
+        }
+      }
+
+      tbody {
+        tr[role=row] {
+          > *:first-child {
+            @extend %datatables__background;
+          }
+
+          > td:not(:first-child) {
+            @extend %datatables__data-cell;
+          }
+
+          &:hover {
+            @extend %datatables__row--hover;
+          }
+        }
+
+        .dataTables_empty {
+          @extend %datatables__no-data;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@each $name, $col in $colors-status {
+  .color__#{$name} {
+    background-color: $col;
+  }
+}

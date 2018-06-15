@@ -1,0 +1,23 @@
+// Grid
+
+.grid,
+%grid {
+  @include duk-flex-grid-gutter;
+  list-style: none;
+
+  &--col-1 {
+    @include duk-flex-grid-responsive((x-small: 1), '.grid-item');
+  }
+
+  &--col-2 {
+    @include duk-flex-grid-responsive((medium: 2), '.grid-item');
+  }
+
+  &--col-3 {
+    @include duk-flex-grid-responsive((medium: 2, x-large: 3), '.grid-item');
+  }
+
+  &--col-4 {
+    @include duk-flex-grid-responsive((x-small: 1, medium: 2, x-large: 4), '.grid-item');
+  }
+}

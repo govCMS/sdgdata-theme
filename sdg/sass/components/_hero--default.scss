@@ -1,0 +1,11 @@
+.hero--default {
+
+  .hero__content-inner {
+    background-color: map-get($colors-background, 'primary');
+    min-width: 293px;
+
+    @include duk-at-breakpoint(laptop) {
+      min-width: 764px;
+    }
+  }
+}

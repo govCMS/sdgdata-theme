@@ -1,0 +1,168 @@
+// =============================================================================
+// Name:            Thumbnail
+// Description:     Defines styles for image thumbnails.
+//
+// Component:       `duk-thumbnail`
+//
+// Sub-object:      `duk-thumbnail__caption`
+//
+// Modifiers:       `duk-thumbnail--left`
+//                  `duk-thumbnail--right`
+//                  `duk-thumbnail--center`
+//                  `duk-thumbnail--round`
+//
+// Dependencies:    `tools/align`
+//                  `tools/border`
+//
+// Markup:
+//
+// <!-- duk-thumbnail -->
+// <div class="duk-thumbnail">
+//     <img src="http://placekitten.com/g/300/200" alt="" />
+//     <div class="duk-thumbnail__caption">Hello World</div>
+// </div>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-thumbnail-namespace:          $duk-namespace !default;
+
+$duk-thumbnail-margin-horizontal:  $duk-base-spacing-unit !default;
+$duk-thumbnail-margin-vertical:    $duk-base-spacing-unit !default;
+$duk-thumbnail-padding-horizontal: $duk-half-spacing-unit !default;
+$duk-thumbnail-padding-vertical:   $duk-half-spacing-unit !default;
+$duk-thumbnail-round:              $duk-base-ui-round !default;
+
+$duk-thumbnail-background:         $duk-base-ui-background !default;
+$duk-thumbnail-border:             $duk-base-ui-border !default;
+$duk-thumbnail-color:              $duk-base-ui-color !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Thumbnail
+
+ 1. Container width fits its content.
+ 2. Responsive behavior.
+ ============================================================================ */
+
+@mixin duk-thumbnail {
+  background: $duk-thumbnail-background;
+  border: $duk-thumbnail-border;
+  display: inline-block; /* 1 */
+  max-width: 100%;       /* 2 */
+  padding: $duk-thumbnail-padding-vertical $duk-thumbnail-padding-horizontal;
+}
+
+%#{$duk-thumbnail-namespace}thumbnail {
+  @include duk-thumbnail;
+}
+
+
+/* Modifier: `duk-thumbnail--left`
+ *
+ * Extends `.duk-thumbnail` and floats it to the left.
+ ============================================================================ */
+
+@mixin duk-thumbnail--left {
+  @include duk-align-left($duk-thumbnail-margin-vertical, $duk-thumbnail-margin-horizontal);
+}
+
+%#{$duk-thumbnail-namespace}thumbnail--left {
+  @include duk-thumbnail--left;
+}
+
+
+/* Modifier: `duk-thumbnail--right`
+ *
+ * Extends `.duk-thumbnail` and floats it to the right.
+ ============================================================================ */
+
+@mixin duk-thumbnail--right {
+  @include duk-align-right($duk-thumbnail-margin-vertical, $duk-thumbnail-margin-horizontal);
+}
+
+%#{$duk-thumbnail-namespace}thumbnail--right {
+  @include duk-thumbnail--right;
+}
+
+
+/* Modifier: `duk-thumbnail--center`
+ *
+ * Extends `.duk-thumbnail` and centers it.
+ ============================================================================ */
+
+@mixin duk-thumbnail--center {
+  @include duk-align-center;
+}
+
+%#{$duk-thumbnail-namespace}thumbnail--center {
+  @include duk-thumbnail--center;
+}
+
+
+/* Modifier: `duk-thumbnail--round`
+ *
+ * Extends `.duk-thumbnail` and rounds its corners.
+ ============================================================================ */
+
+@mixin duk-thumbnail--round {
+  @include duk-border-round($duk-thumbnail-round);
+}
+
+%#{$duk-thumbnail-namespace}thumbnail--round {
+  @include duk-thumbnail--round;
+}
+
+
+/* ==========================================================================
+ Sub-object: Caption
+
+ 1. Make sure the caption behaves like a block element if it is not one.
+ ============================================================================ */
+
+@mixin duk-thumbnail__caption {
+  display: block; /* 1 */
+  padding-top: $duk-thumbnail-padding-vertical;
+  text-align: center;
+}
+
+%#{$duk-thumbnail-namespace}thumbnail__caption {
+  @include duk-thumbnail__caption;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-thumbnail-classes == true {
+
+  .#{$duk-thumbnail-namespace}thumbnail {
+    @extend %#{$duk-thumbnail-namespace}thumbnail;
+  }
+
+  .#{$duk-thumbnail-namespace}thumbnail--left {
+    @extend %#{$duk-thumbnail-namespace}thumbnail--left;
+  }
+
+  .#{$duk-thumbnail-namespace}thumbnail--right {
+    @extend %#{$duk-thumbnail-namespace}thumbnail--right;
+  }
+
+  .#{$duk-thumbnail-namespace}thumbnail--center {
+    @extend %#{$duk-thumbnail-namespace}thumbnail--center;
+  }
+
+  .#{$duk-thumbnail-namespace}thumbnail--round {
+    @extend %#{$duk-thumbnail-namespace}thumbnail--round;
+  }
+
+  .#{$duk-thumbnail-namespace}thumbnail__caption {
+    @extend %#{$duk-thumbnail-namespace}thumbnail__caption;
+  }
+
+} // @endif

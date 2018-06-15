@@ -1,0 +1,11 @@
+// Z-index map
+//
+// A hash map of all possible z-indexes on the site.
+
+$z-index: (
+  below-bottom:     -1,
+  bottom:           0,
+  alpha:            1,
+  beta:             10,
+  top:              999
+) !default;

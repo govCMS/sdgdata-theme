@@ -1,0 +1,39 @@
+// =============================================================================
+// Name:            Responsive Square
+// Description:     Collection of mixins to create responsive squares.
+// =============================================================================
+
+
+/**
+ * Base styles to create a responsive square wrapper.
+ *
+ * 1. Prevent the content from overflowing.
+ * 2. Needed because of the content.
+ * 3. Make sure the height matches the width.
+ */
+@mixin duk-responsive-square-wrapper($width: 100%) {
+  overflow: hidden;   /* 1 */
+  position: relative; /* 2 */
+  width: $width;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* 3 */
+  }
+}
+
+
+/**
+ * Base styles to create a responsive square content.
+ *
+ * 1. This is the trick, the content has no influence on the height of its
+ *    parent container.
+ */
+@mixin duk-responsive-square-content {
+  bottom: 0;
+  left: 0;
+  position: absolute; /* 1 */
+  right: 0;
+  top: 0;
+}

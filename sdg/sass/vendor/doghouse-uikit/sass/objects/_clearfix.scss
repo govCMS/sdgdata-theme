@@ -1,0 +1,43 @@
+// =============================================================================
+// Name:            Clearfix
+// Description:     Extend the clearfix class with Sass to avoid the
+//                  `.duk-clearfix` class appearing over and over in your
+//                  markup.
+//
+//                  @see http://css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+//
+// Component:       `duk-clearfix`
+//
+// Markup:
+//
+// <!-- duk-clearfix -->
+// <div class="duk-clearfix">
+//   Hello World
+// </ul>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-clearfix-namespace: $duk-namespace !default;
+
+
+// Placeholders
+// =============================================================================
+
+%#{$duk-clearfix-namespace}clearfix {
+  @include duk-clearfix;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-clearfix-classes == true {
+
+  .#{$duk-clearfix-namespace}clearfix {
+    @extend %#{$duk-clearfix-namespace}clearfix;
+  }
+
+} // @endif

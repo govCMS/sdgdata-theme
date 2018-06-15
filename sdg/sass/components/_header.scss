@@ -1,0 +1,88 @@
+// Header
+
+.header,
+%header {
+  margin-left: $duk-base-spacing-unit;
+  margin-right: $duk-base-spacing-unit + $menu-toggle-width;
+
+  &__content {
+    height: $menu-toggle-height;
+    position: relative;
+  }
+
+  &__content--constrained {
+    @include duk-gutter-horizontal(0);
+  }
+
+  &__branding {
+    @include vertical-align-middle(absolute);
+    max-width: 350px;
+    width: 60%;
+  }
+
+  &__search {
+    @include sdg-transition(width);
+    @include vertical-align-middle(absolute);
+    right: 0;
+    width: 0;
+    z-index: 5;
+
+    .search-form-open & {
+      width: 100%;
+    }
+  }
+
+  &__menu-toggle {
+    @include duk-position-absolute(top 0 right 0);
+  }
+
+  &__region {
+    @include duk-position-absolute(top 0 left 0);
+    @include duk-size(calc(100% - #{$menu-toggle-width}), 0);
+
+    .mobile-menu-open & {
+      height: 100%;
+    }
+  }
+
+  @include duk-at-breakpoint(tablet) {
+    margin-left: $duk-one-n-half-spacing-unit;
+  }
+
+  @include duk-at-breakpoint(desktop) {
+    @include duk-gutter-horizontal($duk-one-n-half-spacing-unit);
+    position: relative;
+    z-index: 5;
+
+    &__content {
+      height: 120px;
+      width: 100%;
+    }
+
+    &__search {
+      .search-form-open & {
+        width: 50%;
+      }
+    }
+
+    &__menu-toggle {
+      display: none;
+    }
+
+    &__region {
+      @include vertical-align-middle(absolute);
+      height: auto;
+      left: auto;
+      right: $duk-double-spacing-unit;
+      width: auto;
+    }
+  }
+
+  @include duk-at-breakpoint(desktop-wide) {
+    max-width: map-get($layout-width, 'container');
+  }
+
+  @include duk-at-breakpoint(desktop-widest) {
+    @include duk-gutter-horizontal(auto);
+  }
+}

@@ -1,0 +1,26 @@
+// Search results
+
+.view-indicator-search-results {
+  @include duk-at-breakpoint(desktop) {
+    float: left;
+    width: 60%;
+  }
+
+  .views-row {
+    border-bottom: 1px solid map-get($colors-border, 'light-grey');
+    margin-bottom: $duk-double-spacing-unit;
+    padding-bottom: $duk-double-spacing-unit;
+
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .view-pager {
+    border-top: 1px solid map-get($colors-border, 'light-grey');
+    margin-bottom: $duk-double-spacing-unit;
+    margin-top: $duk-double-spacing-unit;
+    padding-top: $duk-double-spacing-unit;
+  }
+}

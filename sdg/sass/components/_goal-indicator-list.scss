@@ -1,0 +1,154 @@
+.goal-indicator-list {
+  @extend %gutter-responsive--vertical--padding;
+  position: relative;
+}
+
+.goal-indicator-list--view {
+  position: static;
+
+  .views-row {
+    clear: both;
+    margin-bottom: $duk-double-spacing-unit;
+    overflow: hidden;
+  }
+
+  .view-header {
+    @include duk-position-absolute(top 0 left 50%);
+
+    p {
+      margin: 0;
+    }
+
+    .scroll-arrow {
+      @include more-content-icon;
+    }
+  }
+
+  .views-field {
+    &-rendered-entity {
+      float: left;
+      margin-right: map-get($goal-indicator-entity, 'gutter');
+      width: map-get($goal-indicator-entity, 'width');
+
+      @include duk-at-breakpoint(goal-indicator-status) {
+        width: map-get($goal-indicator-entity, 'width-desktop');
+      }
+    }
+
+    &-description {
+      clear: both;
+      margin-bottom: $duk-half-spacing-unit;
+      margin-top: (-$duk-base-spacing-unit);
+
+      @include duk-at-breakpoint(goal-indicator-status) {
+        clear: none;
+        float: right;
+        margin-bottom: $duk-base-spacing-unit;
+        margin-top: 0;
+        min-height: 65px;
+        width: map-get($goal-indicator-description, 'width-desktop');
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        @include font-size('small-larger');
+        font-weight: map-get($font-weight, 'semi-bold');
+        text-decoration: none;
+        color: map-get($colors-font, 'darkest');
+
+        @include duk-at-breakpoint(typography) {
+          @include font-size('x-large');
+        }
+
+        &:hover {
+          text-decoration: underline;
+          color: map-get($colors-link, 'primary');
+        }
+      }
+    }
+  }
+
+  .line-graph {
+    @include duk-display-flex;
+
+    @include duk-at-breakpoint(goal-indicator-status) {
+      margin-left: map-get($goal-indicator-entity, 'width-gutter-desktop');
+      width: map-get($goal-indicator-linegraph, 'width-desktop');
+    }
+
+    &__item {
+      float: left;
+      height: 10px;
+
+      &:first-child {
+        @include border-radius($goal-indicator-radius 0 0 $goal-indicator-radius);
+
+        &:last-child {
+          border-radius: $goal-indicator-radius;
+        }
+      }
+
+      &:not(:first-child):last-child {
+        @include border-radius(0 $goal-indicator-radius $goal-indicator-radius 0);
+      }
+
+    }
+
+  }
+}
+
+.indicator-stats {
+  clear: right;
+
+  @include duk-at-breakpoint(goal-indicator-status) {
+    margin-bottom: $duk-base-spacing-unit;
+    margin-left: map-get($goal-indicator-entity, 'width-gutter-desktop');
+  }
+
+  &__row {
+    display: inline-block;
+    margin-bottom: $duk-half-spacing-unit;
+    margin-right: $duk-three-quarter-spacing-unit;
+    color: map-get($colors-font, 'darkest');
+  }
+
+  &__total {
+    @include transform(translateY(-100%));
+    float: right;
+    margin-top: 50%;
+    width: map-get($goal-indicator-total, 'indicator-total-width');
+
+    @include duk-at-breakpoint(goal-indicator-status) {
+      @include transform(translateY(0));
+      margin: 0;
+      text-align: right;
+      width: map-get($goal-indicator-total, 'width-desktop');
+    }
+
+    a {
+      @extend %button;
+      background: none;
+      border: 1px solid map-get($colors-border, 'button-transparent');
+      color: map-get($colors-font, 'darkest');
+      padding: 0 $duk-one-n-half-spacing-unit;
+
+      &:hover {
+        background: map-get($colors-buttons, 'default');
+        color: map-get($colors-font, 'lightest');
+      }
+    }
+  }
+
+  &__count {
+    @include border-radius(50%);
+    display: inline-block;
+    height: $goal-indicator-count-size;
+    line-height: $goal-indicator-count-size;
+    margin-right: $duk-half-spacing-unit;
+    text-align: center;
+    width: $goal-indicator-count-size;
+  }
+}

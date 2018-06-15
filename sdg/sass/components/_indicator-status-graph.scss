@@ -1,0 +1,100 @@
+// A single donut graph.
+.indicator-donut {
+  @include container(350px);
+
+  // Force the donuts to be smaller on mobile.
+  canvas {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  // And bigger on desktop.
+  @include duk-at-breakpoint(large-donut) {
+    canvas {
+      width: 260px !important;
+      height: 260px !important;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__content {
+    display: none;
+  }
+
+  &__count {
+    @include font-size(donut-number);
+    @include font-weight(bold);
+  }
+
+  &__title {
+    @include font-size(body);
+    padding-bottom: $duk-quarter-spacing-unit;
+  }
+
+  &__percent {
+    display: none !important; // Remove this to show percentage.
+    @include font-size(body);
+  }
+
+  .circleChart_text {
+    @include transform(scale(0.8));
+    padding-top: 20px !important; // This may need to change if the size of the graph does.
+
+    @include duk-at-breakpoint(large-donut) {
+      @include transform(scale(1));
+      padding-top: 80px !important;
+    }
+
+    span {
+      @include font-color(darkest);
+      display: block;
+      line-height: 1.2;
+    }
+  }
+
+  // IE doesn't work with donuts. So they get just a list.
+  @include msie-feature-detect {
+    &__content {
+      @include font-color(darkest);
+      text-align: center;
+
+      &, span {
+        display: block;
+      }
+    }
+  }
+
+}
+
+// The view listing all the graphs.
+.view-indicator-status-graph {
+  position: relative;
+
+  .view-content {
+    margin: $duk-double-spacing-unit auto;
+  }
+
+  .views-row {
+    display: inline-block;
+    padding: 0 $duk-quarter-spacing-unit;
+
+    @include duk-at-breakpoint(large-donut) {
+      padding: 0 $duk-base-spacing-unit;
+    }
+  }
+}
+
+// The pane listing all the graphs.
+.pane-indicator-status-graph-panel-pane-1 {
+  @extend %gutter-responsive--vertical--padding;
+  @extend %divider;
+  text-align: center;
+  position: relative;
+
+  .pane-title {
+    padding-top: $duk-base-spacing-unit;
+  }
+}

@@ -1,0 +1,15 @@
+
+$scrollbar-width: 15px;
+
+$layout-width: (
+  site: 1920px,
+  hero: 1440px,
+  container: 1440px,
+  legend: 1200px,
+  base: 100%,
+);
+
+$site-gutters: (
+  'mobile':         $duk-base-spacing-unit,
+  'tablet':         $duk-one-n-half-spacing-unit,
+);

@@ -1,0 +1,27 @@
+// CKAN Graphs.
+// This affects the full view of Indicator nodes.
+.table-chart {
+
+  &--actions {
+    margin-top: $duk-double-spacing-unit;
+    margin-bottom: $duk-one-n-half-spacing-unit;
+
+    button {
+      @extend %button;
+      @extend %button--primary;
+      @include duk-gutter-horizontal($duk-base-spacing-unit, padding);
+      font-size: map-get($font-sizes, 'body');
+      margin-bottom: $duk-half-spacing-unit;
+      font-weight: map-get($font-weight, 'normal');
+
+      @include duk-at-breakpoint(phablet) {
+        @include duk-gutter-horizontal($duk-base-spacing-unit, padding);
+      }
+
+      &:not(:last-child) {
+        margin-right: $duk-half-spacing-unit;
+      }
+    }
+  }
+
+}

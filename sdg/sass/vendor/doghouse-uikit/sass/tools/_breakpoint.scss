@@ -1,0 +1,50 @@
+// =============================================================================
+// Name:            Breakpoint
+// Description:     Collection of functions to manipulate $duk-base-breakpoints.
+// =============================================================================
+
+
+/**
+ * Return the query of a breakpoint.
+ */
+@function duk-breakpoint-get-query($name, $breakpoints: $duk-base-breakpoints) {
+  @return map-deep-get($breakpoints, $name, query);
+}
+
+
+/**
+ * Return the layout of a breakpoint.
+ */
+@function duk-breakpoint-get-layout($name, $breakpoints: $duk-base-breakpoints) {
+  @return map-deep-get($breakpoints, $name, layout);
+}
+
+
+/**
+ * This mixin acts as a wrapper for susy-breakpoint().
+ *
+ * @see http://susydocs.oddbird.net/en/latest/toolkit/#susy-breakpoint
+ */
+@mixin duk-susy-breakpoint($name, $breakpoints: $duk-base-breakpoints) {
+  $query: duk-breakpoint-get-query($name, $breakpoints);
+  $layout: duk-breakpoint-get-layout($name, $breakpoints);
+
+  @include susy-breakpoint($query, $layout) {
+    @content;
+  }
+}
+
+
+/**
+ * A wrapper for state based breakpoints.
+ *
+ * Use state based breakpoints to normalise a state rather than a size. Example
+ * Update $duk-base-breakpoint-states to include states where a number of things
+ * might change. Eg. desktop-header, sidebar-visible, etc. This means you can
+ * easily change when that state occurs.
+ */
+@mixin duk-at-breakpoint($name, $breakpoints: $duk-base-breakpoint-states) {
+  @include duk-susy-breakpoint(map-get($breakpoints, $name)) {
+    @content;
+  }
+}

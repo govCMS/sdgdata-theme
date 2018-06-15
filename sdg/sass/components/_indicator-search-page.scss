@@ -1,0 +1,12 @@
+// Indicator search page
+
+.page-search {
+
+  @include duk-at-breakpoint(desktop) {
+    #content {
+      @include container(map-get($layout-width, 'container'));
+      overflow: auto;
+    }
+  }
+
+}

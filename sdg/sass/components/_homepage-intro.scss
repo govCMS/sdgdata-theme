@@ -1,0 +1,22 @@
+// Homepage introduction bean block.
+.homepage-intro {
+  @include pie-clearfix;
+  @extend %intro-text;
+  @extend %gutter-responsive--vertical--padding;
+
+  .bean-basic-content p:first-child,
+  .pane-title {
+    margin-top: 0;
+  }
+
+  @include duk-at-breakpoint(laptop) {
+    .pane-title {
+      @include span(4 of 12);
+    }
+
+    .bean-basic-content {
+      @include span(7 of 12 last);
+    }
+  }
+
+}

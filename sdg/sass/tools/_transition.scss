@@ -1,0 +1,6 @@
+/**
+ * Mixin to transition css properties.
+ */
+@mixin sdg-transition($property, $duration: $transition-default-duration, $timing: $transition-default-timing-function) {
+  @include transition($property $duration $timing);
+}

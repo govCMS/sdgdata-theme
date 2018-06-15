@@ -1,0 +1,18 @@
+.button,
+%button {
+  @include button;
+  @include button-size($button-height);
+
+  &--primary {
+    @include button-state(text, default, text, hover);
+  }
+
+  &--large {
+    @include button-size($button-height);
+
+    @include duk-at-breakpoint(laptop) {
+      @include button-size($button-height-desktop, body);
+    }
+  }
+
+}

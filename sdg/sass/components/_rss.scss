@@ -1,0 +1,23 @@
+
+.rss {
+  float: right;
+  padding-left: $duk-base-spacing-unit;
+
+  a {
+    @include transition(none);
+    @include font-color('rss');
+    @include font-weight('regular');
+    @include font-size('small-larger');
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      @include font-color('darkest');
+
+      i {
+        @include font-color('rss-icon-hover');
+      }
+    }
+  }
+
+}

@@ -1,0 +1,96 @@
+// =============================================================================
+// Name:            Island
+// Description:     Defines styles for boxed off content.
+//
+// Component:       `duk-island`
+//
+// Modifiers:       `duk-island--small`
+//                  `duk-island--big`
+//
+// Markup:
+//
+// <!-- duk-island -->
+// <ul class="duk-island">
+//   Hello World
+// </ul>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-island-namespace:       $duk-namespace !default;
+
+$duk-island-padding-small:   $duk-half-spacing-unit !default;
+$duk-island-padding-regular: $duk-base-spacing-unit !default;
+$duk-island-padding-big:     $duk-double-spacing-unit !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Island
+ ============================================================================ */
+
+@mixin duk-island {
+  @extend %#{$duk-clearfix-namespace}clearfix;
+  display: block;
+  padding: $duk-island-padding-regular;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+%#{$duk-island-namespace}island {
+  @include duk-island;
+}
+
+
+/* Modifier: `duk-island--small`
+ *
+ * Extends `.duk-island` and makes it small.
+ ============================================================================ */
+
+@mixin duk-island--small {
+  padding: $duk-island-padding-small;
+}
+
+%#{$duk-island-namespace}island--small {
+  @include duk-island--small;
+}
+
+
+/* Modifier: `duk-island--big`
+ *
+ * Extends `.duk-island` and makes it big.
+ ============================================================================ */
+
+@mixin duk-island--big {
+  padding: $duk-island-padding-big;
+}
+
+%#{$duk-island-namespace}island--big {
+  @include duk-island--big;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-island-classes == true {
+
+  .#{$duk-island-namespace}island {
+    @extend %#{$duk-island-namespace}island;
+  }
+
+  .#{$duk-island-namespace}island--small {
+    @extend %#{$duk-island-namespace}island--small;
+  }
+
+  .#{$duk-island-namespace}island--big {
+    @extend %#{$duk-island-namespace}island--big;
+  }
+
+} // @endif

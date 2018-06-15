@@ -1,0 +1,16 @@
+// =============================================================================
+// Name:            Clearfix
+// Description:     A simple clearfix mixin helper.
+// =============================================================================
+
+
+/**
+ * Force element to self-clear its children.
+ */
+@mixin duk-clearfix {
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}

@@ -1,0 +1,9 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+a#main-content {
+  @include duk-gutter-horizontal(0, padding);
+}

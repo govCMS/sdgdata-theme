@@ -1,0 +1,44 @@
+%tabs-primary,
+.tabs-primary {
+  @include duk-clearfix;
+  list-style-type: none;
+  padding-left: 0;
+
+  &__tab {
+    display: inline-block;
+    float: left;
+    padding: 0;
+
+    a {
+      @include sdg-transition(background-color);
+      display: inline-block;
+      padding: $duk-half-spacing-unit $duk-base-spacing-unit;
+      background-color: map-get($colors-background, 'light-alpha');
+
+      &:hover {
+        background-color: map-get($colors-background, 'light');
+      }
+    }
+
+    &:not(:first-child) {
+      margin-left: $duk-half-spacing-unit;
+
+      @include duk-at-breakpoint(tablet) {
+        margin-left: $duk-base-spacing-unit;
+      }
+    }
+  }
+
+  &__tab--active {
+    a {
+      background-color: map-get($colors-background, 'primary');
+      color: map-get($colors-text, 'lightest');
+    }
+  }
+}
+
+.tabs-primary {
+  .tabs-primary__tab.is-active {
+    @extend %tabs-primary__tab--active;
+  }
+}

@@ -1,0 +1,98 @@
+
+.indicator-status-legend {
+  @extend %gutter-responsive--vertical--padding;
+  @include remove-constraints;
+  background-color: map-get($colors-background, 'primary');
+
+  // Last item on the taxonomy page.
+  .page-taxonomy & {
+    margin-bottom: 0 !important;
+  }
+
+  &__title {
+    @include font-color(lightest);
+    margin: 0 0 $duk-base-spacing-unit;
+
+    @include duk-at-breakpoint(laptop) {
+      margin-bottom: $duk-double-spacing-unit;
+    }
+  }
+
+  &__footer {
+    @include border-radius(0 0 $indicator-status-legend--border-radius 0);
+    @include duk-icon(file-text-o);
+    background-color: map-get($colors-background, 'primary-light');
+    padding: $duk-three-quarter-spacing-unit $duk-double-spacing-unit $duk-three-quarter-spacing-unit $duk-base-spacing-unit;
+    position: relative;
+
+    &, p, a {
+      @include font-color(lightest);
+      @include font-weight(normal);
+      text-decoration: none;
+      margin: 0;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    &:after,
+    &:before {
+      @include duk-position-absolute(top 0 left 0 bottom 0);
+      @include border-radius(100%);
+      @include font-color(lightest);
+      @include font-size(h3);
+      width: $indicator-status-legend--footer-height;
+      line-height: $indicator-status-legend--footer-height;
+      text-align: center;
+      z-index: 2;
+      display: none;
+    }
+
+    &:after {
+      content: "";
+      background: map-get($colors-background, primary-alt);
+      z-index: 1;
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      @include border-radius($indicator-status-legend--border-radius 0 $indicator-status-legend--border-radius $indicator-status-legend--border-radius);
+      padding-left: ($duk-double-spacing-unit * 2);
+
+      &:after,
+      &:before {
+        display: block;
+      }
+    }
+  }
+
+  &--view {
+    @include constraints;
+    @include duk-gutter-horizontal(auto, margin);
+  }
+
+  .views-row {
+    position: relative;
+  }
+
+  .view-footer {
+    margin-top: $duk-base-spacing-unit;
+  }
+
+  .view-content {
+
+    > ul {
+      @extend %grid;
+      @include duk-flex-grid-responsive((medium: 2), 'li.views-row');
+      @include duk-flex-grid-gutter;
+
+      // First item as a curvy corner.
+      @include duk-at-breakpoint(laptop) {
+        > li:nth-child(3) > .indicator-status-teaser {
+          @include border-radius(0 0 0 $indicator-status-legend--border-radius);
+        }
+      }
+    }
+  }
+
+}

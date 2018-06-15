@@ -1,0 +1,165 @@
+// =============================================================================
+// Name:            Defaults
+// Description:     Defines variables that are used by the framework.
+// =============================================================================
+
+
+/**
+ * Framework settings.
+ */
+$duk-namespace: 'duk-' !default;
+
+
+/**
+ * Base font stuff.
+ */
+$duk-base-font-size:   16px !default;
+$duk-base-line-height: 24px !default;
+$duk-base-font-family: sans-serif !default;
+
+
+/**
+ * Base units.
+ *
+ * 1. Assign our `$duk-base-line-height` to a new spacing var for more
+ *    transparency.
+ */
+$duk-base-spacing-unit:       $duk-base-line-height !default;
+$duk-half-spacing-unit:       $duk-base-spacing-unit / 2 !default;
+$duk-quarter-spacing-unit:    $duk-base-spacing-unit / 4 !default;
+$duk-one-n-half-spacing-unit: $duk-base-spacing-unit * 1.5 !default;
+$duk-double-spacing-unit:     $duk-base-spacing-unit * 2 !default;
+$duk-triple-spacing-unit:     $duk-base-spacing-unit * 3 !default;
+$duk-line-height-ratio:       $duk-base-line-height / $duk-base-font-size !default; /* 1 */
+
+
+/**
+ * Base UI stuff.
+ */
+$duk-base-ui-background:          #fafafa !default;
+$duk-base-ui-background-overlay:  rgba(0, 0, 0, 0.5) !default;
+$duk-base-ui-border:              1px solid #e5e5e5 !default;
+$duk-base-ui-color:               #666 !default;
+$duk-base-ui-color-overlay:       #fff !default;
+$duk-base-ui-round:               3px !default;
+
+$duk-base-ui-primary-background:  $duk-base-ui-background !default;
+$duk-base-ui-primary-border:      $duk-base-ui-border !default;
+$duk-base-ui-primary-color:       $duk-base-ui-color !default;
+
+$duk-base-ui-success-background:  #f2fae3 !default;
+$duk-base-ui-success-border:      1px solid #c7dda3 !default;
+$duk-base-ui-success-color:       #659f13 !default;
+
+$duk-base-ui-warning-background:  #fffceb !default;
+$duk-base-ui-warning-border:      1px solid #f5d7af !default;
+$duk-base-ui-warning-color:       #e28327 !default;
+
+$duk-base-ui-danger-background:   #fff1f0 !default;
+$duk-base-ui-danger-border:       1px solid #f2c0b5 !default;
+$duk-base-ui-danger-color:        #d85030 !default;
+
+$duk-base-ui-inactive-background: #fafafa !default;
+$duk-base-ui-inactive-border:     1px solid #e5e5e5 !default;
+$duk-base-ui-inactive-color:      #999 !default;
+
+
+/**
+ * Base breakpoint stuff.
+ *
+ * This UI Kit uses Susy 2 to create its layouts, so the definition of `query`
+ * and `layout` are as per Susy's documentation.
+ *
+ * @see http://susydocs.oddbird.net/
+ */
+$duk-base-breakpoints: (
+  x-small: (
+    query: 30em,
+    layout: ()
+  ),
+  small: (
+    query: 37.5em,
+    layout: ()
+  ),
+  medium: (
+    query: 48em,
+    layout: ()
+  ),
+  large: (
+    query: 56.25em,
+    layout: ()
+  ),
+  x-large: (
+    query: 75em,
+    layout: ()
+  ),
+  xx-large: (
+    query: 100em,
+    layout: ()
+  )
+) !default;
+
+
+/**
+ * Breakpoints based on a state mapping to an size.
+ *
+ * Use with duk-at-breakpoint() instead of duk-susy-breakpoint.
+ * @example (desktop-header: large, side-nav-visible: medium)
+ */
+$duk-base-breakpoint-states: (
+  desktop: x-large,
+) !default;
+
+
+/**
+ * Font-sizes (in pixels).
+ *
+ * Refer to relevant sections for their implementations.
+ */
+$duk-font-size-giga:  96px !default;
+$duk-font-size-mega:  72px !default;
+$duk-font-size-kilo:  48px !default;
+$duk-font-size-milli: 12px !default;
+$duk-font-size-micro: 10px !default;
+
+
+/**
+ * Base toggles.
+ */
+$duk-use-form-classes:     false !default;
+$duk-use-headings-classes: false !default;
+$duk-use-image-classes:    false !default;
+$duk-use-main-classes:     false !default;
+$duk-use-main-elements:    false !default;
+$duk-use-table-classes:    false !default;
+
+
+/**
+ * Generic toggles.
+ */
+$duk-use-normalize: false !default;
+
+
+/**
+ * Objects toggles.
+ */
+$duk-use-align-classes:             false !default;
+$duk-use-border-classes:            false !default;
+$duk-use-breadcrumb-classes:        false !default;
+$duk-use-button-classes:            false !default;
+$duk-use-clearfix-classes:          false !default;
+$duk-use-flyout-classes:            false !default;
+$duk-use-icon-classes:              false !default;
+$duk-use-island-classes:            false !default;
+$duk-use-message-classes:           false !default;
+$duk-use-nav-classes:               false !default;
+$duk-use-overlay-classes:           false !default;
+$duk-use-responsive-square-classes: false !default;
+$duk-use-text-classes:              false !default;
+$duk-use-thumbnail-classes:         false !default;
+$duk-use-vertical-align-classes:    false !default;
+
+/**
+ * Animation toggles.
+ */
+$duk-use-animation-spin:            false !default;

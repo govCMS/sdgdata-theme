@@ -1,0 +1,6 @@
+// Indicator list
+
+.indicator-list {
+  @extend %gutter-responsive--vertical--margin;
+  @include duk-justify-content(flex-start);
+}

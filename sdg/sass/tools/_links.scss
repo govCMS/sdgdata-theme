@@ -1,0 +1,37 @@
+/**
+ * Generic link mixin.
+ */
+@mixin link($color, $state-color, $font-weight-value: 'semi-bold') {
+  @include sdg-transition(color);
+  color: map-get($colors-link, $color);
+  font-weight: map-get($font-weight, $font-weight-value);
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: map-get($colors-link, $state-color);
+  }
+}
+
+/**
+ * Generic underline mixin. text-decoration property cannot be transitioned.
+ */
+@mixin link-underline-decoration($color, $hover, $width: 100%, $animation: zero-to-hero-width) {
+  position: relative;
+
+  &:before {
+    @include sdg-transition(width);
+    content: "";
+    position: absolute;
+    background: map-get($colors-link, $color);
+    bottom: 5px;
+    left: 0;
+    height: 1px;
+    width: $width;
+  }
+
+  &:hover:before {
+    @include animation($animation $transition-default-duration);
+    color: map-get($colors-link, $hover);
+  }
+}

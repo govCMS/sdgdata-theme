@@ -1,0 +1,13 @@
+
+// Base overrides.
+$duk-base-font-size: 16px;
+$duk-base-spacing-unit: 24px;
+
+// Form overrides.
+$duk-form-height: $duk-base-font-size * 3;
+
+// Icon object overrides.
+$duk-icon-font-path: "../sass/vendor/doghouse-uikit/fonts";
+
+// Custom spacing unit multipliers.
+$duk-three-quarter-spacing-unit: round($duk-base-spacing-unit * 0.75);

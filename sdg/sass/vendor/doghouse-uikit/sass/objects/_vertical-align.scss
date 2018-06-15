@@ -1,0 +1,79 @@
+// =============================================================================
+// Name:            Vertical Align
+// Description:     Collection of useful utility classes to vertical align
+//                  images and objects.
+//
+// Component:       `duk-vertical-align`
+//
+// Sub-object:      `duk-vertical-align__content--middle`
+//                  `duk-vertical-align__content--bottom`
+//
+// Markup:
+//
+// <!-- duk-vertical-align -->
+// <div class="duk-vertical-align">
+//   <div class="duk-vertical-align__content--middle">Hello World</div>
+// </div>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-vertical-align-namespace: $duk-namespace !default;
+
+
+// Placeholders
+// =============================================================================
+
+%#{$duk-vertical-align-namespace}vertical-align {
+  @include duk-vertical-align-wrapper;
+}
+
+%#{$duk-vertical-align-namespace}vertical-align__content {
+  @include duk-vertical-align-content;
+}
+
+
+/* Modifier: `duk-vertical-align__content--middle`
+ *
+ * Extends `.duk-vertical-align__content` and aligns it to the middle.
+ ============================================================================ */
+
+%#{$duk-vertical-align-namespace}vertical-align__content--middle {
+  @include duk-vertical-align-content(middle);
+}
+
+
+/* Modifier: `duk-vertical-align__content--bottom`
+ *
+ * Extends `.duk-vertical-align__content` and aligns it to the bottom.
+ ============================================================================ */
+
+%#{$duk-vertical-align-namespace}vertical-align__content--bottom {
+  @include duk-vertical-align-content(bottom);
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-vertical-align-classes == true {
+
+  .#{$duk-vertical-align-namespace}vertical-align {
+    @extend %#{$duk-vertical-align-namespace}vertical-align;
+  }
+
+  .#{$duk-vertical-align-namespace}vertical-align__content {
+    @extend %#{$duk-vertical-align-namespace}vertical-align__content;
+  }
+
+  .#{$duk-vertical-align-namespace}vertical-align__content--middle {
+    @extend %#{$duk-vertical-align-namespace}vertical-align__content--middle;
+  }
+
+  .#{$duk-vertical-align-namespace}vertical-align__content--bottom {
+    @extend %#{$duk-vertical-align-namespace}vertical-align__content--bottom;
+  }
+
+} // @endif

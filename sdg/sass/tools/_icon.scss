@@ -1,0 +1,43 @@
+/**
+ * Include a sdg icomoon icon.
+ */
+@mixin sdg-icon($icon-code: false, $pseudo: 'before') {
+  @include duk-icon($icon-code, $sdg-icon-mappings, $pseudo);
+}
+
+/**
+ * Return a sdg icomoon icon code.
+ */
+@function icon-code($icon-code) {
+  @return duk-icon-code($icon-code, $sdg-icon-mappings);
+}
+
+/**
+ * Return a goal teaser font size.
+ */
+@mixin goal-teaser-size($size) {
+  .goal-teaser__icon:before {
+    font-size: map-get($goal-icon-sizes, $size);
+  }
+}
+
+@mixin more-content-icon($icon-width: 44px, $icon-height: $icon-width, $position: left 50% bottom 0) {
+  @include duk-icon(chevron-down);
+  position: relative;
+
+  &:before {
+    @include duk-position-absolute($position);
+    @include transform(translateX(-50%) translateY(50%));
+    display: block;
+    background: map-get($colors-background, 'primary');
+    clear: both;
+    color: map-get($colors-text, 'lightest');
+    font-size: map-get($font-sizes, 'small-larger');
+    font-weight: map-get($font-weight, 'light');
+    height: $icon-height;
+    line-height: $icon-height;
+    text-align: center;
+    width: $icon-width;
+    z-index: map-get($z-index, 'beta');
+  }
+}

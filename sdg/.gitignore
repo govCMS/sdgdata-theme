@@ -1,0 +1,8 @@
+# Ignore Sass cache folder.
+.sass-cache/
+
+# Ignore Node.js modules folder.
+node_modules/
+
+# Ignore CSS files created by this project.
+/css

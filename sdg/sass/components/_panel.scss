@@ -1,0 +1,13 @@
+// Generic panel styles.
+.panel-pane {
+
+  // Let pane determine top margin via a gutter.
+  .pane-title {
+    margin-top: 0;
+  }
+
+  // First item has a restricted top gutter due to breadcrumbs.
+  &:first-child:not(.homepage-intro) {
+    @extend %gutter-responsive--first-item;
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "name": "doghouse/uikit",
+    "type": "drupal-library",
+    "license": "GPL-2.0+",
+    "description":"Default UI kit Setup"
+}

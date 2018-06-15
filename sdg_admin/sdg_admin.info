@@ -1,0 +1,7 @@
+name = Sustainable Development Goals Admin
+description = A simple one-column, tableless, fluid width administration theme.
+core = 7.x
+base theme = shiny
+
+scripts[] = js/excellentexport.min.js
+scripts[] = js/script.js

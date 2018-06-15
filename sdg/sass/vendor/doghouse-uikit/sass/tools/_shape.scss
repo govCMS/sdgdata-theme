@@ -1,0 +1,52 @@
+// =============================================================================
+// Name:            Shapes
+// Description:     Collection of mixins to generate shapes.
+// =============================================================================
+
+
+/**
+ * This mixin creates a triangle of the given size and orientation.
+ *
+ * Example:
+ *
+ * .class:before {
+ *   @include duk-triangle(right, top 1em, red, 2em);
+ * }
+ *
+ * This creates a red triangle pointing to the right of the size 2em.
+ *
+ * Note: You will probably want to set position: relative on .class for
+ * positining to work as you expect.
+ *
+ * @param {string} $direction
+ *   The arrow direction.
+ * @param {list} $position
+ *   The list of offsets and values as per @mixin duk-position().
+ * @param {color} $color (inherit)
+ *   The arrow color.
+ * @param {number} $size (1em)
+ *   The arrow size.
+ */
+@mixin duk-triangle($direction, $position, $color: currentColor, $size: 1em) {
+  @if not index(top right bottom left, $direction) {
+    @warn "Direction must be one of top, right, bottom or left.";
+  }
+  @else {
+    @include duk-position-absolute($position);
+    @include duk-size(0);
+    content: '';
+    z-index: 2;
+
+    border-#{opposite-position($direction)}: $size * 1.5 solid $color;
+    $perpendicular-borders: $size solid transparent;
+
+    @if $direction == top or $direction == bottom {
+      border-left:   $perpendicular-borders;
+      border-right:  $perpendicular-borders;
+    }
+    @else if $direction == right or $direction == left {
+      border-bottom: $perpendicular-borders;
+      border-top:    $perpendicular-borders;
+    }
+  }
+}

@@ -1,0 +1,395 @@
+%resp-tabs,
+.resp-tabs {
+  &-list {
+    display: none;
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-display-flex;
+      @include duk-justify-content(space-between);
+    }
+  }
+
+  &__tab {
+    @include duk-flex-basis(auto);
+    @include duk-flex(1);
+    max-width: none;
+    @include sdg-transition(all, $duration: 0.6s);
+    border: none !important;
+    font-size: map-get($font-sizes, 'h4');
+    background-color: map-get($colors-background, 'light-alpha');
+    color: map-get($colors-link, 'body');
+    padding: $duk-half-spacing-unit $duk-base-spacing-unit;
+    text-align: center;
+    margin-right: 0;
+    font-weight: map-get($font-weight, 'semi-bold');
+    cursor: pointer;
+
+    @include duk-at-breakpoint(laptop) {
+      @include box-sizing(border-box);
+      padding: $duk-base-spacing-unit $duk-quarter-spacing-unit;
+    }
+
+    + * {
+      margin-left: $duk-quarter-spacing-unit;
+    }
+  }
+
+  &__tab--hover {
+    @include box-shadow($tab-box-shadow map-get($colors-border, 'grey'));
+  }
+
+  &__tab--active {
+    @include box-shadow($tab-box-shadow map-get($colors-link, 'primary'));
+    background-color: map-get($colors-background, 'lightest');
+    color: map-get($colors-link, 'primary');
+    cursor: auto;
+  }
+
+  &__accordion {
+    @include sdg-transition(all);
+    @include duk-gutter-vertical(0);
+    display: block;
+    padding: $duk-half-spacing-unit $duk-base-spacing-unit;
+    background-color: map-get($colors-background, 'light-alpha');
+    font-size: map-get($font-sizes, 'body');
+    color: map-get($colors-mono-transparent, 'semi-dark');
+    position: relative;
+    border: sdg-border-line(); // Override default library styling.
+
+    @include duk-at-breakpoint(resp-tabs) {
+      display: none;
+    }
+
+    &:not(:first-child) {
+      border-top: none;
+    }
+  }
+
+  &__accordion--active {
+    border-color: transparent !important; // Override default library styling.
+  }
+
+  &__arrow {
+    @include duk-position-absolute(top 50% right $duk-base-spacing-unit);
+    @include transform(translateY(-50%));
+    @include duk-icon(chevron-down);
+    border: none;
+
+    &:before {
+      font-size: map-get($font-sizes, 'body');
+      color: map-get($colors-mono-transparent, 'semi-dark');
+    }
+  }
+
+  &__arrow--active {
+    @include duk-icon(chevron-up);
+  }
+
+  &__tab-content--active {
+    display: block;
+  }
+
+  &__field {
+    @include duk-gutter-vertical($duk-base-spacing-unit, padding);
+
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-gutter-horizontal($duk-base-spacing-unit, padding);
+    }
+
+    @include duk-at-breakpoint(desktop) {
+      @include duk-gutter-horizontal($duk-double-spacing-unit, padding);
+    }
+
+    a {
+      font-weight: map-get($font-weight, 'normal');
+    }
+  }
+
+  &__field-separator {
+    border-top: sdg-border-line($colour: map-get($colors-border, 'light-grey'));
+  }
+
+  &__tab-description {
+    padding: 0;
+
+    & + * {
+      border-top: none !important;
+    }
+  }
+
+  &__tab-description-body {
+    @include duk-gutter-vertical(0, padding);
+    @include duk-gutter-horizontal(0, padding);
+
+    > * {
+      padding-top: $duk-half-spacing-unit;
+      padding-bottom: $duk-three-quarter-spacing-unit;
+      border-bottom: sdg-border-line($colour: map-get($colors-border, 'light-grey'));
+
+      @include duk-at-breakpoint(resp-tabs) {
+        @include duk-gutter-horizontal($duk-base-spacing-unit, padding);
+        padding-top: $duk-base-spacing-unit;
+        padding-bottom: $duk-one-n-half-spacing-unit;
+        font-size: map-get($font-sizes, 'body');
+      }
+
+      @include duk-at-breakpoint(desktop) {
+        @include duk-gutter-horizontal($duk-double-spacing-unit, padding);
+        padding-top: $duk-double-spacing-unit - $duk-half-spacing-unit;
+        padding-bottom: $duk-double-spacing-unit;
+      }
+    }
+  }
+
+  &__tab-content {
+    @include duk-gutter-vertical($duk-half-spacing-unit, padding);
+    display: none;
+
+    &:not(:last-child) {
+      border-bottom: sdg-border-line();
+    }
+
+    @include duk-at-breakpoint(resp-tabs) {
+      border-bottom: none !important;
+    }
+  }
+
+  &__tab-view-row {
+    @include font-size('body');
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__field--label-hidden {
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-gutter-horizontal(0, padding);
+    }
+
+    @include duk-at-breakpoint(desktop) {
+      @include duk-gutter-horizontal(0, padding);
+    }
+  }
+
+  &__field-taxonomy--label-hidden {
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-gutter-vertical(0, padding);
+    }
+  }
+
+  &__field-view {
+    @include duk-at-breakpoint(resp-tabs) {
+      @include duk-gutter-horizontal(0, padding);
+    }
+  }
+
+  &__field-label {
+    @include font-size('h4-mobile');
+    color: map-get($colors-mono-transparent, 'semi-dark');
+    font-weight: map-get($font-weight, 'semi-bold');
+
+    @include duk-at-breakpoint(resp-tabs) {
+      @include font-size('h4');
+    }
+  }
+
+  &__field-label--inline {
+    @include duk-at-breakpoint(resp-tabs) {
+      display: inline-block;
+      width: $tab-field-label-width;
+      max-width: $tab-field-label-width;
+    }
+  }
+
+  &__field-value {
+    margin-top: $duk-half-spacing-unit;
+    font-size: map-get($font-sizes, 'small-larger');
+    color: map-get($colors-font, 'darkest');
+
+    @include duk-at-breakpoint(resp-tabs) {
+      font-size: map-get($font-sizes, 'body');
+    }
+
+    a {
+      @include sdg-transition($property: color);
+      color: map-get($colors-font, 'darkest');
+
+      &:hover {
+        color: map-get($colors-link, 'primary');
+      }
+    }
+  }
+
+  &__field-long-text {
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__field-value--inline {
+    @include duk-at-breakpoint(resp-tabs) {
+      display: inline-block;
+      float: right;
+      margin-top: 0;
+      width: $tab-field-value-width;
+      max-width: $tab-field-value-width;
+    }
+  }
+
+  &__taxonomy-term-description {
+    margin: 0;
+
+    @include duk-at-breakpoint(resp-tabs) {
+      overflow: auto;
+    }
+  }
+
+  &__no-top-gutter {
+    padding-top: 0 !important;
+  }
+}
+
+.resp-tabs {
+  .resp-tabs-list {
+    .resp-tab-item {
+      @extend %resp-tabs__tab;
+
+      &:not(.resp-tab-active) {
+        &:hover {
+          @extend %resp-tabs__tab--hover;
+        }
+      }
+    }
+
+    .resp-tab-active {
+      @extend %resp-tabs__tab--active;
+    }
+  }
+
+  .resp-accordion {
+    @extend %resp-tabs__accordion;
+
+    .resp-arrow {
+      @extend %resp-tabs__arrow;
+    }
+
+    &.resp-tab-active {
+      @extend %resp-tabs__tab--active;
+      @extend %resp-tabs__accordion--active;
+
+      .resp-arrow {
+        @extend %resp-tabs__arrow--active;
+      }
+    }
+  }
+
+  .resp-tab-content {
+    @extend %resp-tabs__tab-content;
+  }
+
+  .resp-tab-content-active {
+    @extend %resp-tabs__tab-content--active;
+  }
+
+  .metadata__pane {
+    > .field {
+      &:not(:first-child) {
+        @extend %resp-tabs__field-separator;
+      }
+    }
+
+    .field {
+      @extend %resp-tabs__field;
+
+      .label-inline {
+        @extend %resp-tabs__field-label;
+        @extend %resp-tabs__field-label--inline;
+
+        & + * {
+          @extend %resp-tabs__field-value;
+          @extend %resp-tabs__field-value--inline;
+          @extend %resp-tabs__field-long-text;
+        }
+      }
+
+      &.field-type-taxonomy-term-reference.field-label-hidden {
+        @extend %resp-tabs__field--label-hidden;
+        @extend %resp-tabs__field-taxonomy--label-hidden;
+
+        .taxonomy-term.view-mode-inline_teaser {
+          > * {
+            @extend %resp-tabs__field;
+          }
+
+          .taxonomy-term-description {
+            @extend %resp-tabs__taxonomy-term-description;
+          }
+        }
+      }
+    }
+
+    .view-field {
+      @extend %resp-tabs__field-view;
+    }
+
+    .resp-tabs-view {
+      .row-label {
+        @extend %resp-tabs__field-label;
+      }
+
+      .row-label--inline {
+        @extend %resp-tabs__field-label--inline;
+      }
+
+      .row-value {
+        @extend %resp-tabs__field-value;
+      }
+
+      .row-value--inline {
+        @extend %resp-tabs__field-value--inline;
+      }
+
+      > .view-content {
+        > .views-row {
+          @extend %resp-tabs__field;
+          @extend %resp-tabs__tab-view-row;
+
+          &:not(:first-child) {
+            @extend %resp-tabs__field-separator;
+          }
+        }
+      }
+    }
+
+    .tab-description {
+      @extend %resp-tabs__tab-description;
+
+      .field-name-field-bean-body {
+        @extend %resp-tabs__tab-description-body;
+
+        .field-item {
+          @extend %resp-tabs__field-long-text;
+        }
+      }
+    }
+
+    .view-empty {
+      @extend %resp-tabs__tab-description-body;
+      @extend %resp-tabs__field-long-text;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+// Menu
+#block-system-main-menu {
+  background: map-get($colors-background, 'lightest');
+  display: none;
+
+  .mobile-menu-open & {
+    height: 100%;
+  }
+
+  h2 {
+    display: none;
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  > ul > li {
+    border-bottom: 1px solid map-get($colors-border, 'light');
+  }
+
+  > ul > li > a,
+  > ul > li > ul > li > a {
+    @include link('primary', 'body-hover');
+    display: block;
+    padding: $duk-base-spacing-unit;
+    text-decoration: none;
+  }
+
+  > ul > li > ul {
+    @include duk-gutter-horizontal($duk-base-spacing-unit);
+    padding-bottom: $duk-one-n-half-spacing-unit;
+  }
+
+  > ul > li > ul > li > a {
+    @include duk-gutter-vertical($duk-half-spacing-unit, 'padding');
+  }
+
+  @include duk-at-breakpoint(desktop) {
+    display: block !important;
+    overflow: visible !important;
+
+    > ul > li {
+      border-bottom: 0;
+      float: left;
+      position: relative;
+    }
+
+    > ul > li > a {
+      padding: $duk-double-spacing-unit;
+    }
+
+    > ul > li:hover > ul {
+      display: block;
+    }
+
+    > ul > li.is-expanded > a {
+      @include duk-icon('chevron-down', $pseudo: 'after');
+
+      &:after {
+        font-size: 0.875em;
+        margin-left: $duk-half-spacing-unit;
+      }
+    }
+
+    > ul > li.is-expanded:hover > a {
+      &:after {
+        content: duk-icon-code('chevron-up');
+      }
+    }
+
+    > ul > li > ul {
+      @include box-shadow(0px 0px 7px 0px rgba(0, 0, 0, 0.07));
+      @include duk-gutter-horizontal(0);
+      @include duk-position-absolute(left 50% top 96%);
+      background: map-get($colors-background, 'lightest');
+      display: none;
+      margin-left: round(225px * -0.5);
+      min-width: 225px;
+      padding-bottom: 0;
+    }
+
+    > ul > li > ul > li {
+      border-bottom: 1px solid map-get($colors-border, 'light');
+    }
+
+    > ul > li > ul > li > a {
+      padding: $duk-half-spacing-unit $duk-base-spacing-unit;
+      text-align: center;
+    }
+  }
+}

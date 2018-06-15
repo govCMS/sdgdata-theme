@@ -1,0 +1,135 @@
+// =============================================================================
+// Name:            Flyout
+// Description:     Defines styles for fly out elements.
+//                  Flyouts are pieces of content that fly out of a parent when
+//                  said parent is hovered.
+//
+// Component:       `duk-flyout`
+//
+// Sub-object:      `duk-flyout__content`
+//
+// Modifiers:       `duk-flyout--left`
+//                  `duk-flyout--right`
+//
+// Markup:
+//
+// <!-- duk-flyout -->
+// <div class="duk-flyout">
+//   Hello World
+//   <div class="duk-flyout__content">
+//     <p>Flying Hello World</p>
+//   </div>
+// </div>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-flyout-namespace:        $duk-namespace !default;
+
+$duk-flyout-content-selector: '.#{$duk-flyout-namespace}flyout__content' !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Flyout
+
+ 1. Regular flyouts sit all the way from the top, flush left.
+ ============================================================================ */
+
+@mixin duk-flyout($flyout-content-selector: $duk-flyout-content-selector) {
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    overflow: visible;
+  }
+
+  &:hover #{$flyout-content-selector} {
+    left: 0; /* 1 */
+  }
+}
+
+%#{$duk-flyout-namespace}flyout {
+  @include duk-flyout;
+}
+
+
+/* Modifier: `duk-flyout--left`
+ *
+ * Extends `.duk-flyout` and positions the flyout on the left of its parent.
+ ============================================================================ */
+
+@mixin duk-flyout--left($flyout-content-selector: $duk-flyout-content-selector) {
+  &:hover #{$flyout-content-selector} {
+    left: auto;
+    right: 100%;
+    top: 0;
+  }
+}
+
+%#{$duk-flyout-namespace}flyout--left {
+  @include duk-flyout--left;
+}
+
+
+/* Modifier: `duk-flyout--right`
+ *
+ * Extends `.duk-flyout` and positions the flyout on the right of its parent.
+ ============================================================================ */
+
+@mixin duk-flyout--right($flyout-content-selector: $duk-flyout-content-selector) {
+  &:hover #{$flyout-content-selector} {
+    left: 100%;
+    top: 0;
+  }
+}
+
+%#{$duk-flyout-namespace}flyout--right {
+  @include duk-flyout--right;
+}
+
+
+/* ==========================================================================
+ Sub-object: Flyout Content
+
+ 1. Position the flyouts off-screen. This is typically better than
+    `display: none;`.
+ ============================================================================ */
+
+@mixin duk-flyout__content {
+  left: -99999px;     /* 1 */
+  position: absolute; /* 1 */
+  top: 100%;          /* 1 */
+}
+
+%#{$duk-flyout-namespace}flyout__content {
+  @include duk-flyout__content;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-flyout-classes == true {
+
+  .#{$duk-flyout-namespace}flyout {
+    @extend %#{$duk-flyout-namespace}flyout;
+  }
+
+  .#{$duk-flyout-namespace}flyout--left {
+    @extend %#{$duk-flyout-namespace}flyout--left;
+  }
+
+  .#{$duk-flyout-namespace}flyout--right {
+    @extend %#{$duk-flyout-namespace}flyout--right;
+  }
+
+  .#{$duk-flyout-namespace}flyout__content {
+    @extend %#{$duk-flyout-namespace}flyout__content;
+  }
+
+} // @endif

@@ -1,0 +1,71 @@
+.node-indicator,
+%node-indicator {
+
+  &__status-link {
+    @include duk-button;
+    @include border-radius(17px);
+    @include sdg-transition(color);
+    line-height: 1;
+    padding: ($duk-base-spacing-unit * 0.33) ($duk-base-spacing-unit * 2.5);
+
+    &, &:hover {
+      color: map_get($colors-text, 'darkest');
+    }
+  }
+
+  &__content,
+  &__caveat-intro {
+    margin: $duk-base-spacing-unit 0;
+  }
+
+  &__paragraph-intro-title {
+    display: none;
+  }
+
+  &__bottom-gutter {
+    padding-bottom: $duk-base-spacing-unit;
+
+    @include duk-at-breakpoint(laptop) {
+      padding-bottom: $duk-double-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(desktop-wide) {
+      padding-bottom: $duk-triple-spacing-unit;
+    }
+  }
+
+  @include duk-at-breakpoint(desktop) {
+
+    &__content,
+    &__caveat-intro {
+      margin: $duk-one-n-half-spacing-unit 0;
+    }
+  }
+}
+
+// drupal selectors
+
+.node-indicator {
+  .field-name-caveat-intro-text {
+    @extend %node-indicator__caveat-intro;
+  }
+
+  .field-name-field-paragraph {
+    @extend %node-indicator__content;
+  }
+
+  .field-name-field-content {
+    .field-name-field-paragraph .field-label {
+      @extend %node-indicator__paragraph-intro-title;
+    }
+  }
+
+  .group-metadata-tabs {
+    @extend %node-indicator__bottom-gutter;
+  }
+
+  .field-name-field-content {
+    @extend %gutter-responsive--vertical--margin;
+  }
+}
+

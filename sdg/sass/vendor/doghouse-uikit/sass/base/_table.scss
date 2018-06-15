@@ -1,0 +1,128 @@
+// =============================================================================
+// Name:            Table
+// Description:     Defines styles for tables.
+//
+// Component:       `duk-table`
+//
+// Modifiers:       `duk-table--striped`
+//                  `duk-table--divided`
+//
+// Markup:
+//
+// <!-- duk-table -->
+// <table class="duk-table duk-table--striped duk-table--divided">
+//   <thead>
+//     <tr>
+//       <th>Heading A</th>
+//       <th>Heading B</th>
+//       <th>Heading C</th>
+//     </tr>
+//   </thead>
+//   <tbody>
+//     <tr>
+//       <td>Data A</td>
+//       <td>Data B</td>
+//       <td>Data C</td>
+//     </tr>
+//   </tbody>
+// </table>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-table-namespace:          $duk-namespace !default;
+
+$duk-table-background-striped: $duk-base-ui-background !default;
+$duk-table-border-divided:     $duk-base-ui-border !default;
+$duk-table-margin-vertical:    $duk-base-spacing-unit !default;
+$duk-table-padding:            $duk-half-spacing-unit !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ========================================================================
+   Component: Table
+
+ 1. Remove most spacing between table cells.
+ ========================================================================== */
+
+@mixin duk-table {
+  border-collapse: collapse; /* 1 */
+  border-spacing: 0;         /* 1 */
+  margin-bottom: $duk-table-margin-vertical;
+  width: 100%;
+
+  th,
+  td {
+    padding: $duk-table-padding;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {
+    vertical-align: top;
+  }
+}
+
+%#{$duk-table-namespace}table {
+  @include duk-table;
+}
+
+
+/* Modifier: `duk-table--striped`
+ *
+ * Extends `.duk-table` and adds a background colour to the first row and every
+ * second after that.
+ ============================================================================ */
+
+@mixin duk-table--striped {
+  tbody tr:nth-of-type(odd) {
+    background: $duk-table-background-striped;
+  }
+}
+
+%#{$duk-table-namespace}table--striped {
+  @include duk-table--striped;
+}
+
+
+/* Modifier: `duk-table--divided`
+ *
+ * Extends `.duk-table` and adds a border in between rows.
+ ============================================================================ */
+
+@mixin duk-table--divided {
+  th,
+  td {
+    border-bottom: $duk-table-border-divided;
+  }
+}
+
+%#{$duk-table-namespace}table--divided {
+  @include duk-table--divided;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-table-classes == true {
+
+  .#{$duk-table-namespace}table {
+    @extend %#{$duk-table-namespace}table;
+  }
+
+  .#{$duk-table-namespace}table--striped {
+    @extend %#{$duk-table-namespace}table--striped;
+  }
+
+  .#{$duk-table-namespace}table--divided {
+    @extend %#{$duk-table-namespace}table--divided;
+  }
+
+} // @endif

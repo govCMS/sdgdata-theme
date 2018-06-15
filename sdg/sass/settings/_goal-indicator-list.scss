@@ -1,0 +1,25 @@
+$goal-indicator-entity: (
+  'width':                50%,
+  'width-desktop':        15%,
+  'gutter':               2%,
+  'width-gutter':         52%,
+  'width-gutter-desktop': 17%,
+);
+
+$goal-indicator-total: (
+  'width':                100% - map-get($goal-indicator-entity, 'width-gutter'),
+  'width-desktop':        25%,
+);
+
+$goal-indicator-description: (
+  'width':                100%,
+  'width-desktop':        100% - map-get($goal-indicator-entity, 'width-gutter-desktop') - map-get($goal-indicator-total, 'width-desktop'),
+);
+
+$goal-indicator-linegraph: (
+  'width':                100%,
+  'width-desktop':        100% - map-get($goal-indicator-entity, 'width-gutter-desktop'),
+);
+
+$goal-indicator-radius: 5px;
+$goal-indicator-count-size: 30px;

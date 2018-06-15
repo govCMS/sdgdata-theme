@@ -1,0 +1,6 @@
+/**
+ * Adds transparent border between elements to provide adequate contrast on screen readers.
+ */
+@mixin low-vision-accessibility {
+  border: 1px solid transparent;
+}

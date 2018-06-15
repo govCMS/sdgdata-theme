@@ -1,0 +1,18 @@
+
+// Make comma list with elements.
+.comma-list {
+
+  span {
+    &:after {
+      content: ',';
+      margin-right: $duk-quarter-spacing-unit;
+    }
+
+    &:last-child {
+      &:after {
+        content: '',
+      }
+    }
+  }
+
+}

@@ -1,0 +1,76 @@
+// =============================================================================
+// Name:            Reset
+// Description:     Collection of mixins to assist with creating gutters.
+// =============================================================================
+
+
+/**
+ * Apply a gutter to the top and bottom.
+ *
+ * @param $size
+ *   Size of the gutter.
+ * @param $type
+ *   Is the gutter 'margin' or 'padding'
+ */
+@mixin duk-gutter-vertical($size: $duk-base-spacing-unit, $type: margin) {
+  @if $type == margin {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+  @if $type == padding {
+    padding-top: $size;
+    padding-bottom: $size;
+  }
+}
+
+
+/**
+ * Apply a gutter to the left and right.
+ *
+ * @param $size
+ *   Size of the gutter.
+ * @param $type
+ *   Is the gutter 'margin' or 'padding'
+ */
+@mixin duk-gutter-horizontal($size: $duk-base-spacing-unit, $type: margin) {
+  @if $type == margin {
+    margin-left: $size;
+    margin-right: $size;
+  }
+  @if $type == padding {
+    padding-left: $size;
+    padding-right: $size;
+  }
+}
+
+
+/**
+ * Apply a responsive gutter based on a map.
+ *
+ * Gutters generally should be responsive as you want more whitespace on larger
+ * screens. This mixin allows you to add a gutter per breakpoint via a map so the
+ * gutter can grow with screen size.
+ *
+ * @param $gutter-map
+ *   The map of breakpoints to gutter size. Eg (small: 10px, large: 15px, xx-large: 30px).
+ * @param $direction
+ *   Is gutter 'vertical' or 'horizontal'
+ * @param $type
+ *   Is the gutter 'margin' or 'padding'
+ */
+@mixin duk-gutter-responsive($gutter-map: (), $direction: vertical, $type: margin) {
+  @if $direction == vertical {
+    @each $bp, $gutter in $gutter-map {
+      @include duk-susy-breakpoint($bp) {
+        @include duk-gutter-vertical($gutter, $type);
+      }
+    }
+  }
+  @if $direction == horizontal {
+    @each $bp, $gutter in $gutter-map {
+      @include duk-susy-breakpoint($bp) {
+        @include duk-gutter-horizontal($gutter, $type);
+      }
+    }
+  }
+}

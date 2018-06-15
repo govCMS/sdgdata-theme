@@ -1,0 +1,154 @@
+// =============================================================================
+// Name:            Headings
+// Description:     Defines styles for Headings 1-6, with corresponding
+//                  Greek-alphabet abstract classes for double-stranded heading
+//                  hierarchy.
+//
+// Component:       `duk-alpha`
+//                  `duk-beta`
+//                  `duk-gamma`
+//                  `duk-delta`
+//                  `duk-epsilon`
+//                  `duk-zeta`
+//
+// Markup:
+//
+// <!-- duk-alpha -->
+// <div class="duk-alpha">
+//   Hello World
+// </ul>
+//
+// <!-- duk-beta -->
+// <div class="duk-beta">
+//   Hello World
+// </ul>
+//
+// <!-- duk-gamma -->
+// <div class="duk-gamma">
+//   Hello World
+// </ul>
+//
+// <!-- duk-delta -->
+// <div class="duk-delta">
+//   Hello World
+// </ul>
+//
+// <!-- duk-epsilon -->
+// <div class="duk-epsilon">
+//   Hello World
+// </ul>
+//
+// <!-- duk-zeta -->
+// <div class="duk-zeta">
+//   Hello World
+// </ul>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-heading-namespace: $duk-namespace !default;
+
+$duk-heading-size-1:    36px !default;
+$duk-heading-size-2:    30px !default;
+$duk-heading-size-3:    24px !default;
+$duk-heading-size-4:    20px !default;
+$duk-heading-size-5:    16px !default;
+$duk-heading-size-6:    14px !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Alpha
+ ============================================================================ */
+
+@mixin duk-alpha {
+  @include duk-font-size($duk-heading-size-1);
+}
+
+%#{$duk-heading-namespace}alpha {
+  @include duk-alpha;
+}
+
+
+/* ==========================================================================
+ Component: Beta
+ ============================================================================ */
+
+@mixin duk-beta {
+  @include duk-font-size($duk-heading-size-2);
+}
+
+%#{$duk-heading-namespace}beta {
+  @include duk-beta;
+}
+
+
+/* ==========================================================================
+ Component: Gamma
+ ============================================================================ */
+
+@mixin duk-gamma {
+  @include duk-font-size($duk-heading-size-3);
+}
+
+%#{$duk-heading-namespace}gamma {
+  @include duk-gamma;
+}
+
+
+/* ==========================================================================
+ Component: Delta
+ ============================================================================ */
+
+@mixin duk-delta {
+  @include duk-font-size($duk-heading-size-4);
+}
+
+%#{$duk-heading-namespace}delta {
+  @include duk-delta;
+}
+
+
+/* ==========================================================================
+ Component: Epsilon
+ ============================================================================ */
+
+@mixin duk-epsilon {
+  @include duk-font-size($duk-heading-size-5);
+}
+
+%#{$duk-heading-namespace}epsilon {
+  @include duk-epsilon;
+}
+
+
+/* ==========================================================================
+ Component: Zeta
+ ============================================================================ */
+
+@mixin duk-zeta {
+  @include duk-font-size($duk-heading-size-6);
+}
+
+%#{$duk-heading-namespace}zeta {
+  @include duk-zeta;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-headings-classes == true {
+
+  .#{$duk-heading-namespace}alpha   { @extend %#{$duk-heading-namespace}alpha; }
+  .#{$duk-heading-namespace}beta    { @extend %#{$duk-heading-namespace}beta; }
+  .#{$duk-heading-namespace}gamma   { @extend %#{$duk-heading-namespace}gamma; }
+  .#{$duk-heading-namespace}delta   { @extend %#{$duk-heading-namespace}delta; }
+  .#{$duk-heading-namespace}epsilon { @extend %#{$duk-heading-namespace}epsilon; }
+  .#{$duk-heading-namespace}zeta    { @extend %#{$duk-heading-namespace}zeta; }
+
+} // @endif

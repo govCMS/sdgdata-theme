@@ -1,0 +1,12 @@
+
+@include duk-form;
+
+button,
+input[type="submit"] {
+  @include duk-button;
+}
+
+input[type="submit"] {
+  @include duk-button--primary;
+  @include duk-button--round;
+}

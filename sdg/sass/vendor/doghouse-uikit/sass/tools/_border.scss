@@ -1,0 +1,20 @@
+// =============================================================================
+// Name:            Border
+// Description:     Collection of mixins to style borders.
+// =============================================================================
+
+
+/**
+ * Give a block element rounded corners.
+ */
+@mixin duk-border-round($border-radius) {
+  @include border-radius($border-radius);
+}
+
+
+/**
+ * Give a block element rounded corners in the form of a circle.
+ */
+@mixin duk-border-circle($border-radius: 50%) {
+  @include duk-border-round($border-radius);
+}

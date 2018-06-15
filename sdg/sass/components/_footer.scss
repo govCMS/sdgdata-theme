@@ -1,0 +1,151 @@
+.footer,
+%footer {
+  @include low-vision-accessibility;
+  @include box-shadow(inset 0 1px 0 0 map-get($colors-line, 'light'));
+  position: relative;
+
+  @include duk-at-breakpoint(phablet) {
+    @include constraints;
+  }
+
+  &__heading {
+    display: none;
+  }
+
+  &__top {
+    text-align: center;
+    overflow: auto;
+
+    @include duk-at-breakpoint(desktop) {
+      overflow: hidden;
+    }
+  }
+
+  &__logo-container {
+    float: left;
+    width: 100%;
+  }
+
+  &__logo {
+    padding: $duk-one-n-half-spacing-unit 0;
+    max-width: $footer-logo-width;
+  }
+
+  &__nav-elements {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__nav-items {
+    float: left;
+    width: 50%;
+    height: 100%;
+    min-height: 70px;
+    text-align: center;
+  }
+
+  &__nav-link {
+    width: 100%;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: map-get($font-weight, 'normal');
+    display: inline-block;
+  }
+
+  &__post {
+    @include bleed-background('primary');
+    position: relative;
+    height: 62px;
+
+    &-copy {
+      @include vertical-align-middle;
+      font-size: 12px;
+      color: map-get($colors-text, 'lightest');
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  @include duk-at-breakpoint(desktop) {
+
+    &__nav-container {
+      float: right;
+      height: 100%;
+      max-height: 120px;
+      padding-top: $duk-base-spacing-unit;
+      padding-bottom: $duk-half-spacing-unit;
+    }
+
+    &__top {
+      padding-top: $duk-half-spacing-unit;
+    }
+
+    &__logo-container {
+      max-width: $footer-logo-width;
+    }
+
+    &__logo {
+     float: left;
+    }
+
+    &__post {
+      height: 50px;
+
+      &-copy {
+        text-align: right;
+      }
+    }
+
+    &__logo-container {
+      float: left;
+    }
+
+    &__nav {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    &__nav-items {
+      @include box-sizing(border-box);
+      width: 33%;
+      height: 100%;
+      min-height: 80px;
+      padding-left: $duk-one-n-half-spacing-unit;
+      padding-bottom: $duk-base-spacing-unit;
+    }
+
+    &__nav-link {
+      float: right;
+    }
+  }
+}
+
+// Drupal selectors.
+.footer {
+
+  h2 {
+    @extend %footer__heading;
+  }
+
+  //&, ul, li {
+  ul, li {
+    @extend %footer__nav-elements;
+  }
+
+  ul {
+    @extend %footer__nav;
+
+    li {
+      @extend %footer__nav-items;
+
+      a {
+        @extend %footer__nav-link;
+      }
+    }
+  }
+
+  .block-menu {
+    @extend %footer__nav-container;
+  }
+}

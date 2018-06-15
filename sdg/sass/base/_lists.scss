@@ -1,0 +1,7 @@
+ul, ol {
+  line-height: map-get($line-heights, 'body');
+
+  li {
+    padding-left: $duk-half-spacing-unit;
+  }
+}

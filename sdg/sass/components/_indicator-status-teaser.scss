@@ -1,0 +1,28 @@
+
+.indicator-status-teaser {
+  @include font-color(darkest);
+  background-color: map-get($colors-background, lightest);
+  padding: $duk-base-spacing-unit;
+  margin-bottom: $duk-half-spacing-unit;
+
+  &__title {
+    @include font-size(h4);
+    @include font-weight(bold);
+    margin: $duk-half-spacing-unit 0 $duk-base-spacing-unit;
+  }
+
+  &__color {
+    @include duk-position-absolute(left $duk-half-spacing-unit top 0 right $duk-half-spacing-unit);
+    height: $duk-half-spacing-unit;
+  }
+
+  .taxonomy-term-description {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include duk-at-breakpoint(laptop) {
+    padding: $duk-double-spacing-unit;
+  }
+}

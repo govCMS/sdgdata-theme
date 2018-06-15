@@ -1,0 +1,153 @@
+// =============================================================================
+// Name:            Overlay
+// Description:     Defines styles for image overlays.
+//
+// Component:       `duk-overlay`
+//
+// Sub-object:      `duk-overlay__area`
+//                  `duk-overlay__area-content`
+//
+// Modifiers:       `duk-overlay--round`
+//
+// Dependencies:    `tools/border`
+//                  `tools/vertical-align`
+//
+// Markup:
+//
+// <!-- duk-overlay -->
+// <a href="#" class="duk-overlay">
+//   <img src="http://placekitten.com/g/300/200" alt="" />
+//   <div class="duk-overlay__area">
+//     <div class="duk-overlay__area-content">Hello World</div>
+//   </div>
+// </a>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-overlay-namespace:     $duk-namespace !default;
+
+$duk-overlay-area-selector: '.#{$duk-overlay-namespace}overlay__area' !default;
+
+$duk-overlay-padding:       $duk-half-spacing-unit !default;
+$duk-overlay-round:         $duk-base-ui-round !default;
+
+$duk-overlay-background:    $duk-base-ui-background-overlay !default;
+$duk-overlay-color:         $duk-base-ui-color-overlay !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Overlay
+ 
+ 1. Container width fits its content.
+ 2. Set max-width for responsive images to prevent `inline-block` consequences.
+ 3. Fixed wrong scaling calculation for images in Chrome.
+ 4. Create position context.
+ 5. Remove the gap between the container and its child element.
+ ============================================================================ */
+
+@mixin duk-overlay($overlay-area-selector: $duk-overlay-area-selector) {
+  display: inline-block;  /* 1 */
+  max-width: 100%;        /* 2 */
+  overflow: hidden;       /* 3 */
+  position: relative;     /* 4 */
+  vertical-align: middle; /* 5 */
+
+  &:hover #{$overlay-area-selector} {
+    opacity: 1;
+  }
+}
+
+%#{$duk-overlay-namespace}overlay {
+  @include duk-overlay;
+}
+
+
+/* Modifier: `duk-overlay--round`
+ *
+ * Extends `.duk-overlay` and rounds its corners.
+ ============================================================================ */
+
+@mixin duk-overlay--round {
+  @include duk-border-round($duk-overlay-round);
+}
+
+%#{$duk-overlay-namespace}overlay--round {
+  @include duk-overlay--round;
+}
+
+
+/* ==========================================================================
+ Sub-object: Overlay Area
+
+ 1. Needed for vertical alignment.
+ ============================================================================ */
+
+@mixin duk-overlay__area {
+  background: $duk-overlay-background;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &:not(:empty) { /* 1 */
+    @include duk-vertical-align-wrapper;
+  }
+}
+
+%#{$duk-overlay-namespace}overlay__area {
+  @include duk-overlay__area;
+}
+
+
+/* ==========================================================================
+ Sub-object: Overlay Area Content
+
+ 1. Set vertical alignment.
+ 2. Set horizontal alignment.
+ ============================================================================ */
+
+@mixin duk-overlay__area-content {
+  box-sizing: border-box;            /* 1 */
+  color: $duk-base-ui-color-overlay;
+  display: inline-block;             /* 2 */
+  padding: $duk-overlay-padding;
+  text-align: center;                /* 2 */
+  width: 100%;                       /* 2 */
+  vertical-align: middle;            /* 1 */
+}
+
+%#{$duk-overlay-namespace}overlay__area-content {
+  @include duk-overlay__area-content;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-overlay-classes == true {
+
+  .#{$duk-overlay-namespace}overlay {
+    @extend %#{$duk-overlay-namespace}overlay;
+  }
+
+  .#{$duk-overlay-namespace}overlay--round {
+    @extend %#{$duk-overlay-namespace}overlay--round;
+  }
+
+  .#{$duk-overlay-namespace}overlay__area {
+    @extend %#{$duk-overlay-namespace}overlay__area;
+  }
+
+  .#{$duk-overlay-namespace}overlay__area-content {
+    @extend %#{$duk-overlay-namespace}overlay__area-content;
+  }
+
+} // @endif

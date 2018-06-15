@@ -1,0 +1,42 @@
+// =============================================================================
+// Name:            Layout
+// Description:     Collection of mixins to create layouts.
+// =============================================================================
+
+
+/**
+ * Create a layout container to hold layout items and galleries.
+ *
+ * @param <layout> $layout
+ *   The Susy layout.
+ */
+@mixin duk-layout-container($layout: null) {
+  @include container($layout);
+}
+
+
+/**
+ * Create a responsive gallery-like layout.
+ *
+ * @param <map> $grid-spans
+ *   The Sass map containing the number of columns keyed by the breakpoint name.
+ *
+ * Example:
+ *
+ * .duk-layout {
+ *   @include duk-layout-container;
+ *   .duk-layout-item {
+ *     @include duk-layout-gallery((tiny: 2, large: 4));
+ *   }
+ * }
+ */
+@mixin duk-layout-gallery($grid-spans) {
+  @each $breakpoint-key, $grid-span in $grid-spans {
+    $query: duk-breakpoint-get-query($breakpoint-key);
+    $layout: duk-breakpoint-get-layout($breakpoint-key);
+
+    @include susy-breakpoint($query, $layout) {
+      @include gallery(1 of $grid-span);
+    }
+  }
+}

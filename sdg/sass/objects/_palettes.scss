@@ -1,0 +1,19 @@
+// Create the status background classes.
+@each $name, $col in $colors-status {
+  .status--#{$name}--background {
+    background: $col;
+  }
+
+  .status-palette--#{$name} {
+    .inherit-color {
+      color: $col;
+    }
+  }
+}
+
+// Create the goal background classes.
+@each $name, $col in $colors-goal {
+  .goal--#{$name}--background {
+    background: $col;
+  }
+}

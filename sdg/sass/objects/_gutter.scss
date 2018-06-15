@@ -1,0 +1,27 @@
+// Responsive gutter.
+.gutter-responsive,
+%gutter-responsive {
+
+  &--vertical--padding {
+    @include duk-gutter-vertical($duk-one-n-half-spacing-unit, padding);
+    @include duk-gutter-responsive((
+      medium: $duk-triple-spacing-unit,
+      large: ($duk-double-spacing-unit * 2)
+    ), vertical, padding);
+  }
+
+  &--vertical--margin {
+    @include duk-gutter-vertical($duk-one-n-half-spacing-unit, margin);
+    @include duk-gutter-responsive((
+      medium: $duk-triple-spacing-unit,
+      large: ($duk-double-spacing-unit * 2)
+    ), vertical, margin);
+  }
+
+  // Restricts top gutter for first item.
+  &--first-item {
+    @include duk-susy-breakpoint(medium) {
+      margin-top: $duk-double-spacing-unit !important;
+    }
+  }
+}

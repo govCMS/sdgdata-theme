@@ -1,0 +1,6 @@
+/**
+ * Function which returns border properties.
+ */
+@function sdg-border-line($width: 1px, $style: solid, $colour: map-get($colors-border, 'grey')) {
+  @return $width $style $colour;
+}

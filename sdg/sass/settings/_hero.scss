@@ -1,0 +1,14 @@
+$hero-default: (
+  'height--mobile':             307px,
+  'height--laptop':             392px,
+  'height--desktop':            476px,
+);
+
+$indicator-hero: (
+  'desc-width':           714px,
+  'goal-width':           150px,
+  'goal-width--laptop':   200px,
+);
+
+$indicator-hero-content-total: map-get($indicator-hero, 'desc-width') + map-get($indicator-hero, 'goal-width--laptop');
+

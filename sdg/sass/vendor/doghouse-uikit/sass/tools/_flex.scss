@@ -1,0 +1,99 @@
+// =============================================================================
+// Name:            Flex
+// Description:     Collection of mixins to provide IE/Edge support for flex.
+// Note:            See: http://compass-style.org/reference/compass/css3/flexbox/
+// =============================================================================
+
+
+/**
+ * Display flex.
+ */
+@mixin duk-display-flex() {
+  display: -ms-flexbox;
+  @include display-flex;
+}
+
+
+/**
+ * Flex wrap.
+ */
+@mixin duk-flex-wrap($wrap: wrap) {
+  -ms-flex-wrap: $wrap;
+  @include flex-wrap($wrap);
+}
+
+
+/**
+ * Flex basis.
+ */
+@mixin duk-flex-basis($fill) {
+  -ms-flex-basis: $fill;
+  @include flex-basis($fill);
+  // IE fix for poor border-box support with flexbox:
+  // https://stackoverflow.com/a/21950351
+  max-width: $fill;
+
+  // IE 10 Fix.
+  -ms-flex-positive: 1;
+}
+
+
+/**
+ * Flex direction.
+ */
+@mixin duk-flex-direction($direction) {
+  -ms-flex-direction: $direction;
+  @include flex-direction($direction);
+}
+
+
+/**
+ * Flex.
+ */
+@mixin duk-flex($flex) {
+  -ms-flex: $flex;
+  @include flex($flex);
+}
+
+
+/**
+ * Flex justify content.
+ */
+@mixin duk-justify-content($justify) {
+  -ms-flex-pack: $justify;
+  @include justify-content($justify);
+}
+
+
+/**
+ * Flex flow.
+ */
+@mixin duk-flex-flow($flow) {
+  -ms-flex-flow: $flow;
+  @include flex-flow($flow);
+}
+
+
+/**
+ * Flex align items.
+ */
+@mixin duk-align-items($align) {
+  -ms-flex-pack: $align;
+  @include align-items($align);
+}
+
+/**
+ * Flex align self.
+ */
+@mixin duk-flex-align-self($align-self) {
+  @include align-self($align-self);
+
+  @if $align-self == flex-start {
+    $align-self: start;
+  }
+  @else if $align-self == flex-end {
+    $align-self: end;
+  }
+
+  -ms-flex-item-align: $align-self;
+}

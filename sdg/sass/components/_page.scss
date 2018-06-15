@@ -1,0 +1,17 @@
+// page settings.
+
+.page {
+  // Add overflow: hidden property to prevent horizontal scrolling when adding @mixin background-bleed on ie11.
+  overflow: hidden;
+}
+
+#page-wrapper {
+  @include container(1920px);
+  overflow-x: hidden;
+}
+
+.node-page.view-mode-full {
+  .field-name-body {
+    @extend %gutter-responsive--vertical--margin;
+  }
+}

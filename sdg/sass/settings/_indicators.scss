@@ -1,0 +1,12 @@
+$indicator-source: (
+  'cell-padding-mobile':     20px,
+  'cell-padding-horizontal': 40px,
+  'cell-padding-vertical':   10px,
+  'row-padding':             25px,
+  'cell-height':             82px,
+  'tab-top-padding':         38px,
+  'label-font':              map-get($font-sizes, 'indicator-label'),
+  'label-line-height':       map-get($line-heights, 'sindicator-label'),
+);
+
+$indicator-status-chevron-size: 44px;

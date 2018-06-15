@@ -1,0 +1,151 @@
+// Base Colours.
+
+// Base colour naming was done with http://chir.ag/projects/name-that-color.
+$colors-base: (
+  'black':                                  #000000,
+  'white':                                  #ffffff,
+  'tundora':                                #4A4A4A,
+  'black-squeeze':                          #E5EFF5,
+  'boston-blue':                            #3F85C7,
+  'chathams-blue':                          #19486A,
+  'sunglo':                                 #E27774,
+  'sandy-brown':                            #F1AD4D,
+  'fern':                                   #5CB85C,
+  'silver':                                 #CCCCCC,
+  'bahama-blue':                            #00689D,
+  'gallery':                                #EAEAEA,
+  'mercury':                                #E5E5E5,
+  'alizarin-crimson':                       #E5243B,
+  'anzac':                                  #DDA63A,
+  'apple':                                  #4C9F38,
+  'cardinal':                               #C5192D,
+  'red-orange':                             #FF3A21,
+  'scooter':                                #26BDE2,
+  'supernova':                              #FCC30B,
+  'disco':                                  #A21942,
+  'orange':                                 #FD6925,
+  'razzmatazz':                             #DD1367,
+  'tree-poppy':                             #FD9D24,
+  'marigold':                               #BF8B2E,
+  'goblin':                                 #3F7E44,
+  'cerulean':                               #0A97D9,
+  'apple2':                                 #56C02B,
+  'merino':                                 #F8F3EA,
+  'concrete':                               #F2F2F2,
+  'silver-dark':                            #B9B9B9,
+  'danube':                                 #488BC9,
+  'dove-gray':                              #666666,
+  'dusty-grey':                             #999999,
+) !default;
+
+// Font colours.
+$colors-font: (
+  'lightest':                               map-get($colors-base, 'white'),
+  'body':                                   map-get($colors-base, 'tundora'),
+  'heading':                                map-get($colors-base, 'black'),
+  'darkest':                                map-get($colors-base, 'black'),
+  'rss':                                    map-get($colors-base, 'dusty-grey'),
+  'rss-icon-hover':                         map-get($colors-base, 'tree-poppy'),
+) !default;
+
+// Border colours.
+$colors-border: (
+  'blockquote':                             map-get($colors-base, 'boston-blue'),
+  'lightest':                               map-get($colors-base, 'white'),
+  'light':                                  map-get($colors-base, 'gallery'),
+  'light-grey':                             map-get($colors-base, 'silver'),
+  'grey':                                   map-get($colors-base, 'silver-dark'),
+  'button-transparent':                     map-get($colors-base, 'tundora'),
+) !default;
+
+// Background colours.
+$colors-background: (
+  'blockquote':                             map-get($colors-base, 'black-squeeze'),
+  'primary':                                map-get($colors-base, 'chathams-blue'),
+  'primary-light':                          map-get($colors-base, 'bahama-blue'),
+  'primary-alt':                            map-get($colors-base, 'cerulean'),
+  'lightest':                               map-get($colors-base, 'white'),
+  'lighter':                                map-get($colors-base, 'merino'),
+  'light':                                  map-get($colors-base, 'silver'),
+  'light-alpha':                            map-get($colors-base, 'concrete'),
+  'primary-alpha':                          map-get($colors-base, 'scooter'),
+  'primary-beta':                           map-get($colors-base, 'danube'),
+  'overlay-close':                          map-get($colors-base, 'bahama-blue'),
+) !default;
+
+// Background colours.
+$colors-text: (
+  'lightest':                               map-get($colors-base, 'white'),
+  'light':                                  map-get($colors-base, 'dove-gray'),
+  'dark':                                   map-get($colors-base, 'tundora'),
+  'darkest':                                map-get($colors-base, 'black'),
+) !default;
+
+// Link colours.
+$colors-link: (
+  'darkest':                                map-get($colors-base, 'black'),
+  'body':                                   map-get($colors-base, 'tundora'),
+  'body-hover':                             map-get($colors-base, 'chathams-blue'),
+  'primary':                                map-get($colors-base, 'bahama-blue'),
+  'breadcrumb':                             map-get($colors-base, 'chathams-blue'),
+  'breadcrumb-hover':                       map-get($colors-base, 'bahama-blue'),
+) !default;
+
+// Line colours.
+$colors-line: (
+  'normal':                                 map-get($colors-base, 'white'),
+  'light':                                  map-get($colors-base, 'mercury'),
+) !default;
+
+//Flag Colours
+$colors-flag: (
+  'gradient-start':                         map-get($colors-base, 'danube'),
+  'gradient-end':                           map-get($colors-base, 'scooter'),
+) !default;
+
+//Flag Colours
+$colors-buttons: (
+  'default':                                map-get($colors-base, 'chathams-blue'),
+  'hover':                                  map-get($colors-base, 'danube'),
+  'text':                                   map-get($colors-base, 'white'),
+) !default;
+
+// Status colours.
+$colors-status: (
+  'reported':                               map-get($colors-base, 'fern'),
+  'exploring-data-sources':                 map-get($colors-base, 'sandy-brown'),
+  'not-yet-reported':                       map-get($colors-base, 'sunglo'),
+  'not-applicable':                         map-get($colors-base, 'dusty-grey'),
+) !default;
+
+// Goal colours.
+$colors-goal: (
+  'no-poverty':                             map-get($colors-base, 'alizarin-crimson'),
+  'zero-hunger':                            map-get($colors-base, 'anzac'),
+  'good-health-and-well-being':             map-get($colors-base, 'apple'),
+  'quality-education':                      map-get($colors-base, 'cardinal'),
+  'gender-equality':                        map-get($colors-base, 'red-orange'),
+  'clean-water-and-sanitation':             map-get($colors-base, 'scooter'),
+  'affordable-and-clean-energy':            map-get($colors-base, 'supernova'),
+  'decent-work-and-economic-growth':        map-get($colors-base, 'disco'),
+  'industry-innovation-and-infrastructure': map-get($colors-base, 'orange'),
+  'reduced-inequalities':                   map-get($colors-base, 'razzmatazz'),
+  'sustainable-cities-and-communities':     map-get($colors-base, 'tree-poppy'),
+  'responsible-consumption-and-production': map-get($colors-base, 'marigold'),
+  'climate-action':                         map-get($colors-base, 'goblin'),
+  'life-below-water':                       map-get($colors-base, 'cerulean'),
+  'life-on-land':                           map-get($colors-base, 'apple2'),
+  'peace-and-justice':                      map-get($colors-base, 'bahama-blue'),
+  'partnerships-for-the-goals':             map-get($colors-base, 'chathams-blue'),
+) !default;
+
+$colors-mono-transparent: (
+  'very-light':                             rgba(map-get($colors-base, 'black'), 0.15),
+  'semi-light':                             rgba(map-get($colors-base, 'black'), 0.3),
+  'semi-dark':                              rgba(map-get($colors-base, 'black'), 0.85),
+) !default;
+
+// Pager colours.
+$colors-pager: (
+  'current':                                map-get($colors-base, 'danube'),
+) !default;

@@ -1,0 +1,48 @@
+// =============================================================================
+// Name:            Text Align
+// Description:     Collection of mixins to align text.
+// =============================================================================
+
+
+/**
+ * Align text horizontally.
+ */
+@mixin duk-text-align-horizontally($direction) {
+  text-align: $direction !important;
+}
+
+@mixin duk-text-align-left {
+  @include duk-text-align-horizontally(left);
+}
+
+@mixin duk-text-align-right {
+  @include duk-text-align-horizontally(right);
+}
+
+@mixin duk-text-align-center {
+  @include duk-text-align-horizontally(center);
+}
+
+@mixin duk-text-align-justify {
+  @include duk-text-align-horizontally(justify);
+}
+
+
+/**
+ * Align text vertically.
+ */
+@mixin duk-text-align-vertically($direction) {
+  vertical-align: $direction !important;
+}
+
+@mixin duk-text-align-top {
+  @include duk-text-align-vertically(top);
+}
+
+@mixin duk-text-align-middle {
+  @include duk-text-align-vertically(middle);
+}
+
+@mixin duk-text-align-bottom {
+  @include duk-text-align-vertically(bottom);
+}

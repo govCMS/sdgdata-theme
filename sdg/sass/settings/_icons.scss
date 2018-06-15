@@ -1,0 +1,27 @@
+// Icon moon mappings.
+
+$sdg-icon-mappings: (
+  font-family: 'Sdg Icons',
+  path: '../fonts/icomoon/fonts',
+  filename: 'icomoon',
+  codes: (
+    filter: "\e911",
+    goal-affordable-and-clean-energy: "\e900",
+    goal-clean-water-and-sanitation: "\e901",
+    goal-climate-action: "\e902",
+    goal-decent-work-and-economic-growth: "\e903",
+    goal-gender-equality: "\e904",
+    goal-good-health-and-well-being: "\e905",
+    goal-industry-innovation-and-infrastructure: "\e906",
+    goal-life-below-water: "\e907",
+    goal-life-on-land: "\e908",
+    goal-no-poverty: "\e909",
+    goal-partnerships-for-the-goals: "\e90a",
+    goal-peace-and-justice: "\e90b",
+    goal-quality-education: "\e90c",
+    goal-reduced-inequalities: "\e90d",
+    goal-responsible-consumption-and-production: "\e90e",
+    goal-sustainable-cities-and-communities: "\e90f",
+    goal-zero-hunger: "\e910",
+  )
+);

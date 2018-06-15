@@ -1,0 +1,35 @@
+/**
+ * Button base.
+ */
+@mixin button {
+  @include duk-button;
+  @include transition(background-color $transition-default-duration $transition-default-timing-function);
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: map-get($font-weight, 'regular');
+}
+
+/**
+ * Set the button size.
+ */
+@mixin button-size($height: $button-height, $font-size: small-larger) {
+  @include border-radius($height);
+  font-size: map-get($font-sizes, $font-size);
+  padding: 0 ($height * 0.8);
+  line-height: $height;
+}
+
+/**
+ * Set the button colours.
+ */
+@mixin button-state($font-color: text, $background-color: default, $font-color-hover: text, $background-color-hover: hover) {
+  color: map-get($colors-buttons, $font-color);
+  background: map-get($colors-buttons, $background-color);
+
+  &:focus,
+  &:hover {
+    color: map-get($colors-buttons, $font-color-hover);
+    background-color: map-get($colors-buttons, $background-color-hover);
+  }
+}

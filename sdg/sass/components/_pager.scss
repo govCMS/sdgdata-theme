@@ -1,0 +1,56 @@
+// Pager
+
+.pager {
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+
+  &-first,
+  &-last,
+  &-ellipsis {
+    display: none;
+  }
+
+  &-previous,
+  &-next,
+  &-current,
+  &-item {
+    display: inline-block;
+  }
+
+  &-previous,
+  &-next {
+    padding-bottom: $duk-quarter-spacing-unit;
+    padding-top: $duk-quarter-spacing-unit;
+  }
+
+  &-previous,
+  &-next,
+  &-item {
+    a {
+      font-weight: map-get($font-weight, 'normal');
+      text-decoration: none;
+    }
+  }
+
+  &-previous {
+    float: left;
+  }
+
+  &-next {
+    float: right;
+  }
+
+  &-current,
+  &-item {
+    padding: $duk-quarter-spacing-unit $duk-three-quarter-spacing-unit;
+  }
+
+  &-current {
+    @include border-radius(500px);
+    background: map-get($colors-pager, 'current');
+    color: map-get($colors-text, 'lightest');
+  }
+}

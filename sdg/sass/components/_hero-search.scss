@@ -1,0 +1,45 @@
+.hero.hero-search {
+  margin-bottom: $duk-double-spacing-unit;
+
+  @include duk-at-breakpoint(desktop-wide) {
+    margin-bottom: $duk-triple-spacing-unit;
+  }
+
+  .hero__content-outer {
+    height: auto;
+
+    &.constraints {
+      width: calc(100% + #{map-get($site-gutters, 'mobile')});
+
+      @include duk-at-breakpoint(tablet) {
+        width: calc(100% + #{map-get($site-gutters, 'tablet')});
+      }
+
+      @include duk-at-breakpoint(desktop-wide) {
+        max-width: calc(100vw - ((100vw - #{map-get($layout-width, container)}) / 2));
+        margin-right: 0;
+      }
+
+      @include duk-at-breakpoint(desktop-widest) {
+        max-width: calc(100vw - ((100vw - #{map-get($layout-width, container)}) / 2));
+      }
+
+      .hero__content-inner {
+        @include transform(translateY(0));
+        @include hero-gradient;
+        display: block;
+        margin-left: 0;
+
+        @include duk-at-breakpoint(desktop-wide) {
+          margin-left: $duk-one-n-half-spacing-unit;
+          max-width: none;
+        }
+
+        @include duk-at-breakpoint(desktop-widest) {
+          margin-left: (-$duk-one-n-half-spacing-unit);
+          max-width: none;
+        }
+      }
+    }
+  }
+}

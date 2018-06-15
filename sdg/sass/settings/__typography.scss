@@ -1,0 +1,72 @@
+// Heading Font
+$font-family-heading: 'Montserrat', sans-serif;
+$font-family-heading-url: 'https://fonts.googleapis.com/css?family=Montserrat:400,600,800';
+$font-headings: h1 h2 h3 h4;
+
+// Generic text Font
+$font-family-paragraphs: 'Hind', sans-serif;
+$font-family-paragraphs-url: 'https://fonts.googleapis.com/css?family=Hind:400,500,700';
+
+$font-weight: (
+  'light':      300,
+  'regular':    400,
+  'normal':     500,
+  'semi-bold':  600,
+  'bold':       700,
+  'extra-bold': 900,
+);
+
+// A font size should always have a corresponding line height.
+$font-sizes: (
+  'body':                   $duk-base-font-size,
+  'h1-mobile':              round($duk-base-font-size * 2.1875),
+  'h2-mobile':              round($duk-base-font-size * 1.375),
+  'h3-mobile':              round($duk-base-font-size * 1.125),
+  'h4-mobile':              $duk-base-font-size,
+  'h1':                     round($duk-base-font-size * 3.125),
+  'h2':                     round($duk-base-font-size * 2.2),
+  'h3':                     round($duk-base-font-size * 1.75),
+  'h4':                     round($duk-base-font-size * 1.125),
+  'mega':                   round($duk-base-font-size * 2.375),
+  'double':                 round($duk-base-font-size * 2),
+  'indicator-label':        round($duk-base-font-size * 1.125),
+  'x-large':                round($duk-base-font-size * 1.375),
+  'larger':                 round($duk-base-font-size * 1.25),
+  'large':                  round($duk-base-font-size * 1.0625),
+  'small-larger':           round($duk-base-font-size * 0.9375),
+  'small':                  round($duk-base-font-size * 0.8125),
+  'smaller':                round($duk-base-font-size * 0.25),
+  'smallest':               round($duk-base-font-size * 0.125),
+  'hero-text--mobile':      round($duk-base-font-size),
+  'donut-number':           round($duk-base-font-size * 3.4375),
+  'intro-text':             round($duk-base-font-size * 1.25),
+  'goal-hero--mobile':      round($duk-base-font-size * 1.5),
+  'goal-hero--desktop':     round($duk-base-font-size * 1.875),
+);
+
+$line-heights: (
+  'body':                   round($duk-base-font-size * 1.75),
+  'h1-mobile':              round($duk-base-font-size * 2.625),
+  'h2-mobile':              round($duk-base-font-size * 2.0625),
+  'h3-mobile':              round($duk-base-font-size * 1.5625),
+  'h4-mobile':              round($duk-base-font-size * 1.1875),
+  'h1':                     round($duk-base-font-size * 3.75),
+  'h2':                     round($duk-base-font-size * 3),
+  'h3':                     round($duk-base-font-size * 2.56),
+  'h4':                     round($duk-base-font-size * 1.38),
+  'mega':                   round($duk-base-font-size * 2.375),
+  'double':                 round($duk-base-font-size * 2.375),
+  'indicator-label':        round($duk-base-font-size * 1.625),
+  'x-large':                round($duk-base-font-size * 1.9375),
+  'larger':                 round($duk-base-font-size * 2),
+  'large':                  round($duk-base-font-size * 1.625),
+  'small-larger':           round($duk-base-font-size * 1.625),
+  'small':                  round($duk-base-font-size * 0.8125),
+  'smaller':                round($duk-base-font-size * 0.25),
+  'smallest':               round($duk-base-font-size * 0.125),
+  'hero-text--mobile':      round($duk-base-font-size * 1.3125),
+  'donut-number':           round($duk-base-font-size * 2.5625),
+  'intro-text':             round($duk-base-font-size * 2.0),
+  'goal-hero--mobile':      round($duk-base-font-size * 1.875),
+  'goal-hero--desktop':     round($duk-base-font-size * 3)
+);

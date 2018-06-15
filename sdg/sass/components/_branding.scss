@@ -1,0 +1,11 @@
+// Branding
+
+.branding {
+  display: block;
+
+  &__logo {
+    display: block;
+    max-width: none;
+    width: 100%;
+  }
+}

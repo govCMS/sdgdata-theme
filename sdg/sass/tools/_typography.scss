@@ -1,0 +1,50 @@
+/**
+ * Font size mixin. See $font-sizes var.
+ */
+@mixin font-size($size) {
+  font-size: map-get($font-sizes, $size);
+  line-height: map-get($line-heights, $size);
+}
+
+/**
+ * Font weight, uses $font-weight.
+ */
+@mixin font-weight($weight) {
+  font-weight: map-get($font-weight, $weight);
+}
+
+/**
+ * Font color, uses $colors-font.
+ */
+@mixin font-color($color) {
+  color: map-get($colors-font, $color);
+}
+
+/**
+ * Heading mixin.
+ */
+@mixin heading($size, $color: 'heading', $weight: semi-bold) {
+  @include font-size($size + '-mobile');
+  @include font-weight($weight);
+  font-family: $font-family-heading;
+  margin: 1em 0;
+
+  @include duk-at-breakpoint(laptop) {
+    @include font-size($size);
+  }
+
+  &, a {
+    @include font-color($color);
+  }
+}
+
+/**
+ * Site base font mixin.
+ */
+@mixin sdg-site-base-font() {
+  @include font-size('small-larger');
+
+  @include duk-at-breakpoint(laptop) {
+    @include font-size('body');
+  }
+}

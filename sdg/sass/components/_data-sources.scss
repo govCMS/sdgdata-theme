@@ -1,0 +1,88 @@
+.data-sources {
+  overflow: hidden;
+  @include duk-at-breakpoint(resp-tabs) {
+    padding-top: map-get($indicator-source, 'tab-top-padding');
+  }
+  .col {
+    width: 100%;
+    @include duk-at-breakpoint(resp-tabs) {
+      display: table;
+      float: left;
+      table-layout: fixed;
+      width: 50%;
+    }
+
+    @include duk-at-breakpoint(resp-tabs) {
+      &:nth-child(even) {
+        padding-left: map-get($indicator-source, 'row-padding');
+      }
+
+      &:nth-child(odd) {
+        padding-right: map-get($indicator-source, 'row-padding');
+      }
+    }
+  }
+
+  &__row {
+    border-bottom: 1px solid map-get($colors-border, 'light-grey');
+    padding: map-get($indicator-source, 'cell-padding-mobile') 0;
+    width: 100%;
+    @include duk-at-breakpoint(resp-tabs) {
+      display: table-row;
+      padding: 0 map-get($indicator-source, 'row-padding');
+      &:last-child {
+        border: 0;
+      }
+    }
+
+    &:last-child {
+      .data-sources__column {
+        border: 0;
+      }
+    }
+  }
+
+  &__column {
+    line-height: map-get($indicator-source, 'label-line-height');
+    @include duk-at-breakpoint(resp-tabs) {
+      border-bottom: 1px solid map-get($colors-border, 'light-grey');
+      display: table-cell;
+      height: map-get($indicator-source, 'cell-height');
+      padding: map-get($indicator-source, 'cell-padding-vertical') map-get($indicator-source, 'cell-padding-horizontal');
+      vertical-align: middle;
+      width: 50%;
+    }
+  }
+
+  &__label {
+    font-size: map-get($indicator-source, 'label-font');
+    font-weight: map-get($font-weight, 'semi-bold');
+    color: map-get($colors-font, 'darkest');
+
+    &--first {
+      height: auto;
+      padding: 0 0 5px;
+      text-align: right;
+    }
+
+  }
+
+  &__text {
+    padding-top: map-get($indicator-source, 'cell-padding-vertical');
+    @include duk-at-breakpoint(resp-tabs) {
+      padding: map-get($indicator-source, 'cell-padding-vertical');
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.resp-tabs {
+  .data-sources__text {
+    .field {
+      padding: 0;
+    }
+  }
+}

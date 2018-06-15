@@ -1,0 +1,52 @@
+// Menu toggle
+
+.menu-toggle {
+  display: block;
+  width: $menu-toggle-width;
+  height: $menu-toggle-height;
+  border: 0;
+  outline: none;
+  color: map-get($colors-line, 'white');
+  background-color: map-get($colors-background, 'primary');
+
+  span {
+    @include border-radius($duk-quarter-spacing-unit);
+    @include transform(rotate(0deg));
+    @include sdg-transition(transform);
+    display: block;
+    margin: 0 auto;
+    width: $menu-toggle-line-width;
+    height: $menu-toggle-line-height;
+    background-color: map-get($colors-background, 'lightest');
+    opacity: 1;
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-top: $duk-quarter-spacing-unit;
+    }
+
+    &:nth-child(3) {
+      width: $menu-toggle-line-width-alternate;
+      margin-left: 0;
+    }
+  }
+
+  .mobile-menu-open & {
+    @include sdg-transition(transform);
+
+    span {
+      &:nth-child(1) {
+        @include transform(translate(0, 10px) rotate(45deg));
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        @include transform(translate(0%, -10px) rotate(-45deg));
+        width: $menu-toggle-line-width;
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+// =============================================================================
+// Name:            Typography
+// Description:     Collection of typography related mixins.
+// =============================================================================
+
+
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value.
+ *
+ * Example:
+ *
+ * @include duk-font-size(10px);
+ */
+@mixin duk-font-size($font-size, $line-height: true) {
+  font-size: $font-size;
+  font-size: ($font-size / $duk-base-font-size) * 1rem;
+  @if $line-height == true {
+    line-height: ceil($font-size / $duk-base-line-height) * ($duk-base-line-height / $font-size);
+  }
+}
+
+/**
+ * Include a font face.
+ *
+ * @param $name
+ *   The name of the font family.
+ * @param $path
+ *   Path of the font folder.
+ * @param $filename
+ *   Filename for the font, expects 3 files with extensions: eot, woff, ttf.
+ * @param $weight
+ *   Weight of the font face.
+ * @param $style
+ *   Style of the font. Eg normal, italic.
+ */
+@mixin duk-font-load($name, $path, $filename, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src: url("#{$path}/#{$filename}.eot");
+    src: url("#{$path}/#{$filename}.eot?#iefix") format("embedded-opentype"),
+    url("#{$path}/#{$filename}.woff") format("woff"),
+    url("#{$path}/#{$filename}.ttf") format("truetype");
+    font-weight: $weight;
+    font-style: $style;
+  }
+}

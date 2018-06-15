@@ -1,0 +1,22 @@
+@mixin hero-title() {
+  position: relative;
+}
+
+@mixin hero-title-text() {
+  @include font-size('double');
+  @include font-weight('bold');
+  margin: 0;
+  color: map-get($colors-font, 'lightest');
+
+  @include duk-at-breakpoint(laptop) {
+    @include font-size('h1');
+  }
+}
+
+@mixin hero-gradient() {
+  @include background(linear-gradient(
+    133.71deg,
+    map-get($colors-background, 'primary') 0%,
+    map-get($colors-background, 'primary-alpha') 100%
+  ));
+}

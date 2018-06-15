@@ -1,0 +1,125 @@
+%hero--indicator,
+.hero--indicator {
+  position: relative;
+
+  &__content-inner {
+    @include duk-display-flex;
+    height: auto;
+    width: 100vw;
+    padding: 0;
+
+    margin-left: (-1 * map-get($site-gutters, 'mobile'));
+    background-color: transparent;
+
+    @include duk-at-breakpoint(tablet) {
+      padding-left: 0;
+      margin-left: -1 * map-get($site-gutters, 'tablet');
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      height: auto;
+      width: calc(100vw - #{$scrollbar-width});
+      bottom: (-$duk-double-spacing-unit);
+      max-width: $indicator-hero-content-total;
+    }
+  }
+
+  &__content-inner--constrained {
+    @include duk-at-breakpoint(tablet) {
+      @include duk-gutter-horizontal(0, padding);
+      margin-left: -1 * map-get($site-gutters, 'tablet');
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      @include duk-gutter-vertical(0, padding);
+    }
+
+    @include duk-at-breakpoint(desktop-wide) {
+      margin-left: $duk-base-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(desktop-widest) {
+      margin-left: (-$duk-double-spacing-unit);
+    }
+  }
+
+  .hero__content-outer {
+    @include duk-at-breakpoint(laptop) {
+      height: 130px;
+    }
+  }
+
+  .hero__text {
+    background-color: map-get($colors-background, 'primary');
+    padding: $duk-base-spacing-unit;
+  }
+
+  .hero__text {
+    @include box-sizing(border-box);
+    @include transform(translateY(0));
+    @include duk-flex-basis(75vw);
+    @include duk-display-flex;
+    @include duk-flex-direction(column);
+    @include duk-justify-content(center);
+
+    @include duk-at-breakpoint(tablet) {
+      padding: $duk-one-n-half-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      @include duk-flex-basis(percentage(map-get($indicator-hero, 'desc-width') / $indicator-hero-content-total));
+    }
+
+    @include duk-at-breakpoint(desktop-wide) {
+      @include duk-gutter-horizontal($duk-double-spacing-unit, padding);
+    }
+  }
+
+  .views-field-title {
+    & + * {
+      margin-top: $duk-half-spacing-unit;
+
+      @include duk-at-breakpoint(typography) {
+        margin-top: $duk-base-spacing-unit;
+      }
+    }
+  }
+
+  .views-field-field-display-title {
+    @include font-size('hero-text--mobile');
+    font-weight: map-get($font-weight, 'semi-bold');
+
+    @include duk-at-breakpoint(typography) {
+      @include font-size('h4');
+    }
+  }
+
+  .hero__goal {
+    @include duk-flex-basis(25vw);
+    margin-top: auto;
+
+    @include duk-at-breakpoint(tablet) {
+      max-height: map-get($indicator-hero, 'goal-width');
+      max-width: map-get($indicator-hero, 'goal-width');
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      max-width: map-get($indicator-hero, 'goal-width--laptop');
+      max-height: map-get($indicator-hero, 'goal-width--laptop');
+    }
+  }
+}
+
+.hero.hero--indicator {
+  .hero__content-outer {
+    .hero__content-inner {
+      @extend %hero--indicator__content-inner;
+    }
+
+    &.constraints {
+      .hero__content-inner {
+        @extend %hero--indicator__content-inner--constrained
+      }
+    }
+  }
+}

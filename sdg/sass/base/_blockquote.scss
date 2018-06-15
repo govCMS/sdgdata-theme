@@ -1,0 +1,14 @@
+blockquote {
+  background: map-get($colors-background, 'blockquote');
+  margin: 0;
+  padding: $duk-one-n-half-spacing-unit;
+  border-left: $duk-quarter-spacing-unit solid map-get($colors-border, 'blockquote');
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

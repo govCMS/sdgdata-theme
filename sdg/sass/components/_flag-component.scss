@@ -1,0 +1,133 @@
+.flag-component {
+  @extend %gutter-responsive--vertical--margin;
+  padding-top: $duk-base-spacing-unit;
+
+  .entity{
+    table-layout: fixed;
+    margin-bottom: $flag-margin-bottom;
+    display: table;
+    width: 100%;
+
+    @include duk-at-breakpoint(flag-sbs) {
+      margin-bottom: $flag-margin-bottom-desktop;
+    }
+  }
+
+  &__col1 {
+    width: 100%;
+    margin-bottom: $flag-margin-bottom;
+    float: none;
+
+    @include duk-at-breakpoint(flag-sbs) {
+      margin-bottom: 0;
+      width: 2/5 * 100%;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  &__col2 {
+    float: none;
+    position: relative;
+    width: 100%;
+
+    @include duk-at-breakpoint(flag-sbs) {
+      max-height: 0;
+      display: table-cell;
+      width: 3/5 * 100%;
+      padding-left: $flag-image-gutter;
+    }
+
+    &:after{
+      content: ' ';
+      display: block;
+      position: absolute;
+      z-index: map-get($z-index, 'below-bottom');
+      right: $flag-gradient-box-position;
+      top: $flag-gradient-box-position;
+      width: 30%;
+      height: 40%;
+      @include scale(-1, -1);
+      background: linear-gradient(
+          135deg,
+          map-get($colors-flag, 'gradient-start') 0%,
+          map-get($colors-flag, 'gradient-end') 100%
+      );
+
+      @include duk-at-breakpoint(flag-sbs) {
+        right: $flag-gradient-box-position-desktop;
+        top: $flag-gradient-box-position-desktop;
+        width: 40%;
+        height: 50%;
+      }
+    }
+  }
+
+  &__body {
+    margin-bottom: $flag-margin-body-bottom;
+
+    @include duk-at-breakpoint(flag-sbs) {
+      margin-bottom: $flag-margin-body-desktop;
+    }
+  }
+
+  &__cta {
+    a {
+      @extend %button;
+      @extend %button--primary;
+      @extend %button--large;
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    position: relative;
+
+    img{
+      display: block;
+      max-width: 120%;
+      height: auto;
+      position: relative;
+      left: 50%;
+      @include translate(-50%, 0);
+
+      @include duk-at-breakpoint(flag-sbs) {
+        max-width: none;
+      }
+    }
+  }
+
+  .odd {
+    direction: rtl;
+
+    .field-group-html-element {
+      direction: ltr;
+    }
+
+    .flag-component {
+
+      &__col1 {
+        padding: 0;
+      }
+
+      &__col2 {
+        @include duk-at-breakpoint(flag-sbs) {
+          padding-left: 0;
+          padding-right: $flag-image-gutter;
+        }
+
+        &:after {
+          left: $flag-gradient-box-position;
+          bottom: $flag-gradient-box-position;
+          top: auto;
+          right: auto;
+
+          @include duk-at-breakpoint(flag-sbs) {
+            left: $flag-gradient-box-position-desktop;
+            bottom: $flag-gradient-box-position-desktop;
+          }
+        }
+      }
+    }
+  }
+}

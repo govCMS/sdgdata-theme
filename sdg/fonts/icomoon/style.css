@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?78os37');
+  src:  url('fonts/icomoon.eot?78os37#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?78os37') format('truetype'),
+    url('fonts/icomoon.woff?78os37') format('woff'),
+    url('fonts/icomoon.svg?78os37#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-filter:before {
+  content: "\e911";
+}
+.icon-goal-affordable-and-clean-energy:before {
+  content: "\e900";
+}
+.icon-goal-clean-water-and-sanitation:before {
+  content: "\e901";
+}
+.icon-goal-climate-action:before {
+  content: "\e902";
+}
+.icon-goal-decent-work-and-economic-growth:before {
+  content: "\e903";
+}
+.icon-goal-gender-equality:before {
+  content: "\e904";
+}
+.icon-goal-good-health-and-well-being:before {
+  content: "\e905";
+}
+.icon-goal-industry-innovation-and-infrastructure:before {
+  content: "\e906";
+}
+.icon-goal-life-below-water:before {
+  content: "\e907";
+}
+.icon-goal-life-on-land:before {
+  content: "\e908";
+}
+.icon-goal-no-poverty:before {
+  content: "\e909";
+}
+.icon-goal-partnerships-for-the-goals:before {
+  content: "\e90a";
+}
+.icon-goal-peace-and-justice:before {
+  content: "\e90b";
+}
+.icon-goal-quality-education:before {
+  content: "\e90c";
+}
+.icon-goal-reduced-inequalities:before {
+  content: "\e90d";
+}
+.icon-goal-responsible-consumption-and-production:before {
+  content: "\e90e";
+}
+.icon-goal-sustainable-cities-and-communities:before {
+  content: "\e90f";
+}
+.icon-goal-zero-hunger:before {
+  content: "\e910";
+}

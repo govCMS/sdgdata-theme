@@ -1,0 +1,149 @@
+// Generic Hero styling.
+%hero,
+.hero {
+  $ns: &;
+
+  &__image {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0,0,0,0.15);
+    margin-right: -1 * map-get($site-gutters, 'mobile');
+    height: map-get($hero-default, 'height--mobile');
+
+    img {
+      display: none;
+    }
+
+    @include duk-at-breakpoint(tablet) {
+      margin-right: -1 * map-get($site-gutters, 'tablet');
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      height: map-get($hero-default, 'height--laptop');
+    }
+
+    @include duk-at-breakpoint(desktop) {
+      height: map-get($hero-default, 'height--desktop');
+    }
+
+    @include duk-at-breakpoint(site-container) {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    @include duk-at-breakpoint(desktop-widest) {
+      max-width: calc(100vw - ((100vw - #{map-get($layout-width, container)}) / 2));
+    }
+  }
+
+  &__full-width {
+    @include duk-gutter-horizontal(0, padding);
+  }
+
+  &__image-field {
+    height: 0;
+  }
+
+  &__content-outer {
+    height: $duk-double-spacing-unit;
+
+    @include duk-at-breakpoint(laptop) {
+      height: $duk-triple-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(desktop-wide) {
+      @include duk-gutter-horizontal(auto);
+      max-width: map-get($layout-width, 'container');
+    }
+  }
+
+  &__content-inner {
+    // translateY(calc(...)) doesn't work in IE11 so just call translateY() twice.
+    @include transform(translateY(-100%) translateY($duk-base-spacing-unit));
+    display: inline-block;
+    padding: $duk-base-spacing-unit;
+    color: map-get($colors-font, 'lightest');
+    position: relative;
+
+
+    @include duk-at-breakpoint(tablet) {
+      @include duk-gutter-horizontal(map-get($site-gutters, 'tablet'), padding);
+    }
+
+    @include duk-at-breakpoint(laptop) {
+      @include transform(translateY(-100%) translateY($duk-double-spacing-unit));
+      padding: $duk-one-n-half-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(desktop-widest) {
+      @include duk-gutter-horizontal($duk-double-spacing-unit, padding);
+    }
+  }
+
+  &__content-inner--constrained {
+    margin-left: -1 * map-get($site-gutters, 'mobile');
+
+    @include duk-at-breakpoint(tablet) {
+      margin-left: -1 * map-get($site-gutters, 'tablet');
+    }
+
+    @include duk-at-breakpoint(desktop-wide) {
+      margin-left: $duk-one-n-half-spacing-unit;
+    }
+
+    @include duk-at-breakpoint(desktop-widest) {
+      margin-left: (-$duk-double-spacing-unit);
+    }
+  }
+
+  &-description {
+    color: map-get($colors-font, 'lightest');
+  }
+
+  &__page-title {
+    @include hero-title;
+  }
+
+  &__page-title-text {
+    @include hero-title-text;
+  }
+}
+
+.hero {
+  .hero__image {
+    .field-type-image {
+      @extend %hero__image-field;
+    }
+  }
+
+  .hero__overlay {
+    &.constraints {
+      @extend %hero__full-width;
+    }
+  }
+
+  .hero__content-inner {
+    @extend %hero__content-inner;
+  }
+
+  .hero__content-outer {
+    &.constraints {
+      @extend %hero__full-width;
+
+      .hero__content-inner {
+        @extend %hero__content-inner--constrained;
+      }
+    }
+  }
+
+  .page-title {
+    @extend %hero__page-title;
+  }
+
+  h2,
+  .page-title__text {
+    @extend %hero__page-title-text;
+  }
+}

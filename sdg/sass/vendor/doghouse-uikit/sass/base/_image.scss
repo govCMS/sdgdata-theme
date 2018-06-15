@@ -1,0 +1,132 @@
+// =============================================================================
+// Name:            Image
+// Description:     Defines styles for images.
+//
+// Component:       `duk-image`
+//
+// Modifiers:       `duk-image--left`
+//                  `duk-image--right`
+//                  `duk-image--center`
+//                  `duk-image--round`
+//
+// Dependencies:    `duk-align`
+//                  `duk-border`
+//
+// Markup:
+//
+// <!-- duk-image -->
+// <img src="http://placekitten.com/g/300/200" alt="" class="duk-image duk-image--left" />
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-image-namespace:         $duk-namespace !default;
+
+$duk-image-margin-horizontal: $duk-base-spacing-unit !default;
+$duk-image-margin-vertical:   $duk-base-spacing-unit !default;
+$duk-image-round:             $duk-base-ui-round !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Compoment: Image
+
+ 1. Remove space below image.
+ ============================================================================ */
+
+@mixin duk-image {
+  max-width: 100%;
+  vertical-align: middle; /* 1 */
+}
+
+%#{$duk-image-namespace}image {
+  @include duk-image;
+}
+
+
+/* Modifier: `duk-image--left`
+ *
+ * Extends `.duk-image` and floats it to the left.
+ ============================================================================ */
+
+@mixin duk-image--left {
+  @include duk-align-left($duk-image-margin-vertical, $duk-image-margin-horizontal);
+}
+
+%#{$duk-image-namespace}image--left {
+  @include duk-image--left;
+}
+
+
+/* Modifier: `duk-image--right`
+ *
+ * Extends `.duk-image` and floats it to the right.
+ ============================================================================ */
+
+@mixin duk-image--right {
+  @include duk-align-right($duk-image-margin-vertical, $duk-image-margin-horizontal);
+}
+
+%#{$duk-image-namespace}image--right {
+  @include duk-image--right;
+}
+
+
+/* Modifier: `duk-image--center`
+ *
+ * Extends `.duk-image` and centers it.
+ ============================================================================ */
+
+@mixin duk-image--center {
+  @include duk-align-center;
+}
+
+%#{$duk-image-namespace}image--center {
+  @include duk-image--center;
+}
+
+
+/* Modifier: `duk-image--round`
+ *
+ * Extends `.duk-image` and rounds its corners.
+ ============================================================================ */
+
+@mixin duk-image--round {
+  @include duk-border-round($duk-image-round);
+}
+
+%#{$duk-image-namespace}image--round {
+  @include duk-image--round;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-image-classes == true {
+
+  .#{$duk-image-namespace}image {
+    @extend %#{$duk-image-namespace}image;
+  }
+
+  .#{$duk-image-namespace}image--left {
+    @extend %#{$duk-image-namespace}image--left;
+  }
+
+  .#{$duk-image-namespace}image--right {
+    @extend %#{$duk-image-namespace}image--right;
+  }
+
+  .#{$duk-image-namespace}image--center {
+    @extend %#{$duk-image-namespace}image--center;
+  }
+
+  .#{$duk-image-namespace}image--round {
+    @extend %#{$duk-image-namespace}image--round;
+  }
+
+} // @endif

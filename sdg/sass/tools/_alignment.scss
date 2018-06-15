@@ -1,0 +1,6 @@
+
+@mixin vertical-align-middle($position: relative) {
+  @include translateY(-50%);
+  position: $position;
+  top: 50%;
+}

@@ -1,0 +1,25 @@
+%hero-homepage,
+.hero-homepage {
+  &__icon {
+    @include more-content-icon($icon-width: 10vw, $position: bottom 0 right 0);
+    position: static;
+
+    &:before {
+      @include transform(translateX(100%));
+
+      @include duk-at-breakpoint(tablet) {
+        height: $duk-double-spacing-unit;
+        line-height: $duk-double-spacing-unit;
+        width: $duk-double-spacing-unit;
+      }
+    }
+  }
+}
+
+.front {
+  .hero {
+    .hero__scroll-btn {
+      @extend %hero-homepage__icon;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+%hero-goals,
+.hero-goals {
+  &__content-inner {
+    @include duk-at-breakpoint(laptop) {
+      max-width: 100%;
+    }
+  }
+
+  &__hero-description {
+    @include font-size('goal-hero--mobile');
+
+    @include duk-at-breakpoint(desktop) {
+      @include font-size('goal-hero--desktop');
+    }
+
+    @include duk-at-breakpoint(desktop-wide) {
+      @include font-size('h1');
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+.view-id-goals_hero {
+  .hero.hero--goals {
+    .hero__content-inner {
+      @extend %hero-goals__content-inner;
+    }
+
+    .hero__text {
+      .field-content {
+        @extend %hero-goals__hero-description;
+      }
+    }
+  }
+}

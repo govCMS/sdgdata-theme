@@ -1,0 +1,53 @@
+// Search form
+
+.search-form {
+  @include duk-display-flex;
+  @include duk-align-items(center);
+  @include duk-justify-content(flex-end);
+  margin-bottom: 0;
+  width: 100%;
+
+  &__item {
+    @include sdg-transition(width);
+    overflow: hidden;
+    width: 0;
+
+    .search-form-open & {
+      overflow: initial;
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    margin-left: $duk-form-height * -0.5;
+  }
+
+  &__widget[type="text"] {
+    @include border-radius(2px);
+    @include box-shadow(0 1px 4px 0 rgba(map-get($colors-base, 'black'), 0.2));
+    outline: none;
+    background: map-get($colors-background, 'lightest');
+    padding-left: $duk-half-spacing-unit;
+    padding-right: $duk-half-spacing-unit;
+    width: 100%;
+  }
+
+  &__toggle {
+    @include border-radius(50%);
+    @include box-shadow(0 2px 2px 0 rgba(map-get($colors-base, 'black'), 0.3));
+    @include sdg-transition(all);
+    background: map-get($colors-background, 'lightest');
+    color: map-get($colors-text, 'dark');
+    min-width: $duk-form-height;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover,
+    &:focus,
+    &:active,
+    .search-form-open & {
+      background: map-get($colors-background, 'primary');
+      color: map-get($colors-text, 'lightest');
+    }
+  }
+}

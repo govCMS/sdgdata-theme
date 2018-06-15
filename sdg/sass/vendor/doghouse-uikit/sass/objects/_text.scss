@@ -1,0 +1,92 @@
+// =============================================================================
+// Name:            Text Align
+// Description:     Collection of useful utility placeholders and classes to
+//                  style text.
+//
+// Component:       `duk-text-align-left`
+//                  `duk-text-align-right`
+//                  `duk-text-align-center`
+//                  `duk-text-align-justify`
+//                  `duk-text-align-top`
+//                  `duk-text-align-middle`
+//                  `duk-text-align-bottom`
+//
+// Markup:
+//
+// <!-- duk-text-align-justify -->
+// <p class="duk-text-align-justify">Hi mum, I am on the top of the world!</p>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-text-namespace: $duk-namespace !default;
+
+
+// Placeholders
+// =============================================================================
+
+%#{$duk-text-namespace}text-align-left {
+  @include duk-text-align-left;
+}
+
+%#{$duk-text-namespace}text-align-right {
+  @include duk-text-align-right;
+}
+
+%#{$duk-text-namespace}text-align-center {
+  @include duk-text-align-center;
+}
+
+%#{$duk-text-namespace}text-align-justify {
+  @include duk-text-align-justify;
+}
+
+%#{$duk-text-namespace}text-align-top {
+  @include duk-text-align-top;
+}
+
+%#{$duk-text-namespace}text-align-middle {
+  @include duk-text-align-middle;
+}
+
+%#{$duk-text-namespace}text-align-bottom {
+  @include duk-text-align-bottom;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-text-classes == true {
+
+  .#{$duk-text-namespace}text-align-left {
+    @extend %#{$duk-text-namespace}text-align-left;
+  }
+
+  .#{$duk-text-namespace}text-align-right {
+    @extend %#{$duk-text-namespace}text-align-right;
+  }
+
+  .#{$duk-text-namespace}text-align-center {
+    @extend %#{$duk-text-namespace}text-align-center;
+  }
+
+  .#{$duk-text-namespace}text-align-justify {
+    @extend %#{$duk-text-namespace}text-align-justify;
+  }
+
+  .#{$duk-text-namespace}text-align-top {
+    @extend %#{$duk-text-namespace}text-align-top;
+  }
+
+  .#{$duk-text-namespace}text-align-middle {
+    @extend %#{$duk-text-namespace}text-align-middle;
+  }
+
+  .#{$duk-text-namespace}text-align-bottom {
+    @extend %#{$duk-text-namespace}text-align-bottom;
+  }
+
+} // @endif

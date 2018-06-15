@@ -1,0 +1,278 @@
+// =============================================================================
+// Name:            Button
+// Description:     Defines styles for buttons.
+//
+// Component:       `duk-button`
+//
+// Modifiers:       `duk-button--primary`
+//                  `duk-button--success`
+//                  `duk-button--danger`
+//                  `duk-button--inactive`
+//                  `duk-button--small`
+//                  `duk-button--large`
+//                  `duk-button--fit`
+//                  `duk-button--round`
+//
+// Dependencies:    `tools/border`
+//
+// Markup:
+//
+// <!-- duk-button -->
+// <a href="#" class="duk-button duk-button--success">
+//   Hello World!
+// </a>
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+$duk-button-namespace:           $duk-namespace !default;
+
+$duk-button-padding:             $duk-base-spacing-unit !default;
+$duk-button-round:               $duk-base-ui-round !default;
+
+$duk-button-primary-background:  $duk-base-ui-primary-background !default;
+$duk-button-primary-border:      $duk-base-ui-primary-border !default;
+$duk-button-primary-color:       $duk-base-ui-primary-color !default;
+
+$duk-button-success-background:  $duk-base-ui-success-background !default;
+$duk-button-success-border:      $duk-base-ui-success-border !default;
+$duk-button-success-color:       $duk-base-ui-success-color !default;
+
+$duk-button-danger-background:   $duk-base-ui-danger-background !default;
+$duk-button-danger-border:       $duk-base-ui-danger-border !default;
+$duk-button-danger-color:        $duk-base-ui-danger-color !default;
+
+$duk-button-inactive-background: $duk-base-ui-inactive-background !default;
+$duk-button-inactive-border:     $duk-base-ui-inactive-border !default;
+$duk-button-inactive-color:      $duk-base-ui-inactive-color !default;
+
+
+// Mixins and Placeholders
+// =============================================================================
+
+/* ==========================================================================
+ Component: Button
+
+ 1. Normalise box model styles.
+ 2. Force all elements using beautons to appear clickable.
+ 3. Allow us to better style box model properties.
+ 4. Make buttons inherit font styles.
+ 5. If the button's text is 1em, and the button is (3 * font-size) tall, then
+    there is 1em of space above and below that text. We therefore apply 1em
+    of space to the left and right, as padding, to keep consistent spacing.
+ 6. Line different sized buttons up a little nicer.
+ 7. Stop buttons wrapping and looking broken.
+ 8. Don't allow buttons to have underlines; it kinda ruins the illusion.
+ ============================================================================ */
+
+@mixin duk-button {
+  border: none;                       /* [1] */
+  cursor: pointer;                    /* [2] */
+  display: inline-block;              /* [3] */
+  font-family: inherit;               /* [4] */
+  font-size: 100%;                    /* [4] */
+  line-height: 3;                     /* [5] */
+  margin: 0;                          /* [1] */
+  padding-bottom: 0;                  /* [1] */
+  padding-left: $duk-button-padding;  /* [5] */
+  padding-right: $duk-button-padding; /* [5] */
+  padding-top: 0;                     /* [1] */
+  vertical-align: middle;             /* [6] */
+  white-space: nowrap;                /* [7] */
+
+  &,
+  &:hover {
+    text-decoration:none; /* [8] */
+  }
+
+  &:active,
+  &:focus {
+    outline:none;
+  }
+}
+
+%#{$duk-button-namespace}button {
+  @include duk-button;
+}
+
+
+/* Modifier: `duk-button--primary`
+ *
+ * Extends `.duk-button` and styles it as the primary button.
+ ============================================================================ */
+
+@mixin duk-button--primary {
+  background: $duk-button-primary-background;
+  border: $duk-button-primary-border;
+  color: $duk-button-primary-color;
+}
+
+%#{$duk-breadcrumb-namespace}button--primary {
+  @include duk-button--primary;
+}
+
+
+/* Modifier: `duk-button--success`
+ *
+ * Extends `.duk-button` and styles it as the success button.
+ ============================================================================ */
+
+@mixin duk-button--success {
+  background: $duk-button-success-background;
+  border: $duk-button-success-border;
+  color: $duk-button-success-color;
+}
+
+%#{$duk-breadcrumb-namespace}button--success {
+  @include duk-button--success;
+}
+
+
+/* Modifier: `duk-button--danger`
+ *
+ * Extends `.duk-button` and styles it as the danger button.
+ ============================================================================ */
+
+@mixin duk-button--danger {
+  background: $duk-button-danger-background;
+  border: $duk-button-danger-border;
+  color: $duk-button-danger-color;
+}
+
+%#{$duk-breadcrumb-namespace}button--danger {
+  @include duk-button--danger;
+}
+
+
+/* Modifier: `duk-button--inactive`
+ *
+ * Extends `.duk-button` and styles it as the inactive button.
+ ============================================================================ */
+
+@mixin duk-button--inactive {
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    background: $duk-button-inactive-background;
+    border: $duk-button-inactive-border;
+    color: $duk-button-inactive-color;
+    cursor: text;
+  }
+}
+
+%#{$duk-breadcrumb-namespace}button--inactive {
+  @include duk-button--inactive;
+}
+
+
+/* Modifier: `duk-button--small`
+ *
+ * Extends `.duk-button` and makes it small.
+ ============================================================================ */
+
+@mixin duk-button--small {
+  line-height: 2;
+  padding-left: $duk-half-spacing-unit;
+  padding-right: $duk-half-spacing-unit;
+}
+
+%#{$duk-breadcrumb-namespace}button--small {
+  @include duk-button--small;
+}
+
+
+/* Modifier: `duk-button--large`
+ *
+ * Extends `.duk-button` and makes it large.
+ ============================================================================ */
+
+@mixin duk-button--large {
+  line-height: 4;
+  padding-left: $duk-one-n-half-spacing-unit;
+  padding-right: $duk-one-n-half-spacing-unit;
+}
+
+%#{$duk-breadcrumb-namespace}button--large {
+  @include duk-button--large;
+}
+
+
+/* Modifier: `duk-button--fit`
+ *
+ * Extends `.duk-button` and makes it fill its parent container.
+ *
+ * 1. Remove padding so that widths and paddings don't conflict.
+ * 2. Full width buttons don't look good unless text is aligned to the center.
+ ============================================================================ */
+
+@mixin duk-button--fit {
+  padding-left: 0;    /* [1] */
+  padding-right: 0;   /* [1] */
+  text-align: center; /* [2] */
+  width: 100%;
+}
+
+%#{$duk-breadcrumb-namespace}button--fit {
+  @include duk-button--fit;
+}
+
+
+/* Modifier: `duk-button--round`
+ *
+ * Extends `.duk-button` and rounds its corners.
+ ============================================================================ */
+
+@mixin duk-button--round {
+  @include duk-border-round($duk-button-round);
+}
+
+%#{$duk-button-namespace}button--round {
+  @include duk-button--round;
+}
+
+
+// Classes
+// =============================================================================
+
+@if $duk-use-button-classes == true {
+
+  .#{$duk-button-namespace}button {
+    @extend %#{$duk-button-namespace}button;
+  }
+
+  .#{$duk-button-namespace}button--primary {
+    @extend %#{$duk-button-namespace}button--primary;
+  }
+
+  .#{$duk-button-namespace}button--success {
+    @extend %#{$duk-button-namespace}button--success;
+  }
+
+  .#{$duk-button-namespace}button--danger {
+    @extend %#{$duk-button-namespace}button--danger;
+  }
+
+  .#{$duk-button-namespace}button--inactive {
+    @extend %#{$duk-button-namespace}button--inactive;
+  }
+
+  .#{$duk-button-namespace}button--small {
+    @extend %#{$duk-button-namespace}button--small;
+  }
+
+  .#{$duk-button-namespace}button--large {
+    @extend %#{$duk-button-namespace}button--large;
+  }
+
+  .#{$duk-button-namespace}button--fit {
+    @extend %#{$duk-button-namespace}button--fit;
+  }
+
+  .#{$duk-button-namespace}button--round {
+    @extend %#{$duk-button-namespace}button--round;
+  }
+
+} // @endif
