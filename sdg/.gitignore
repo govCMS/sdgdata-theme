@@ -4,5 +4,5 @@
 # Ignore Node.js modules folder.
 node_modules/
 
-# Ignore CSS files created by this project.
-/css
+# Ignore Vendor files created by this project.
+/vendor
