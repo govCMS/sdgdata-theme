@@ -8,7 +8,8 @@
     }
 
     th {
-      background-color: map-get($colors-background, 'light');
+      background-color: map-get($colors-background, 'light-grey');
+      text-align: left;
     }
   }
 }
