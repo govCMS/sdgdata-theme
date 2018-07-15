@@ -1,6 +1,8 @@
 .data-sources {
   overflow: hidden;
   @include duk-at-breakpoint(resp-tabs) {
+    @include duk-display-flex;
+    @include duk-flex-wrap(wrap);
     padding-top: map-get($indicator-source, 'tab-top-padding');
   }
   .col {

@@ -60,7 +60,9 @@ function sdg_preprocess_node(&$variables) {
     }
   }
 
-  if (empty($variables['content']['field_other_info_indicator'])) {
+  $node_bundle = $node->getBundle();
+
+  if (empty($variables['content']['field_other_info_indicator']) && $node_bundle != 'webform') {
     $variables['content']['field_other_info_indicator'] = array(
       '#type' => 'container',
       '#attributes' => array('class' => array('view-empty')),

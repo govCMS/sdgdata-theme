@@ -71,6 +71,7 @@ $colors-background: (
   'primary-alpha':                          map-get($colors-base, 'scooter'),
   'primary-beta':                           map-get($colors-base, 'danube'),
   'overlay-close':                          map-get($colors-base, 'bahama-blue'),
+  'light-grey':                             map-get($colors-base, 'gallery'),
 ) !default;
 
 // Background colours.
